@@ -1,0 +1,42 @@
+.textInput {
+  background: rgba(244, 244, 244, 1) 0% 0% no-repeat padding-box;
+  border-radius: 8px;
+  border-color: transparent;
+  opacity: 1;
+
+  padding: 12px 15px;
+}
+
+.textInput::placeholder {
+  font: normal normal normal 16px/22px Nunito;
+  letter-spacing: 0px;
+  color: #99a0a7;
+  opacity: 1;
+}
+
+.textInput:focus {
+  background: #f0f8ff 0% 0% no-repeat padding-box;
+  border: 1px solid #4b9ce2;
+  outline: none;
+}
+
+.errorInput {
+  /* UI Properties */
+  background: #fff2f2 0% 0% no-repeat padding-box !important;
+  border: 1px solid #f77474 !important;
+  border-radius: 8px;
+  color: #f77474 !important;
+  opacity: 1;
+}
+
+.button {
+  background: #4b9ce2 0% 0% no-repeat padding-box;
+  border-radius: 8px;
+  border-color: transparent;
+  color: white;
+  opacity: 1;
+}
+
+.label {
+  font: normal normal normal 15px/20px Nunito;
+}
