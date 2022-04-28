@@ -6,15 +6,14 @@ import Logo from "../../assets/Icons/Logo";
 import styles from "../../styles/Sign.module.css";
 
 import { useAuthContext } from "../../contexts/AuthContext";
+import { isAuth } from "../../services/AuthService";
 
 export default function Login({ isProtected }) {
   const router = useRouter();
   const { isUserAuthenticated } = useAuthContext();
 
   useEffect(() => {
-    if(isUserAuthenticated()){
-      router.push("/");
-    }
+
   }, []);
 
   const clickHandle = () => {
@@ -29,7 +28,7 @@ export default function Login({ isProtected }) {
           <span className={styles.registerText}>Giriş Yap</span>
           <span className={styles.registerUnderText}>
             Fırsatlardan yararlanmak için giriş yap!
-          </span> 
+          </span>
           <LoginForm />
           <div className={styles.underText}>
             Hesabın yok mu?{" "}
@@ -42,3 +41,12 @@ export default function Login({ isProtected }) {
     </div>
   );
 }
+
+export async function getServerSideProps(context) {
+  const response = await isAuth(context.req.headers?.cookie);
+  console.log(response);
+  return {
+    props: {},
+  }
+}
+
