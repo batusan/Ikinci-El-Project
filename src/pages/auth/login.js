@@ -12,7 +12,9 @@ export default function Login({ isProtected }) {
   const { isUserAuthenticated } = useAuthContext();
 
   useEffect(() => {
-    console.log(isUserAuthenticated());
+    if(isUserAuthenticated()){
+      router.push("/");
+    }
   }, []);
 
   const clickHandle = () => {
