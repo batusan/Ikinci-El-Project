@@ -1,6 +1,6 @@
 import axios, { URL } from "../constants/axios";
 import cookie from "js-cookie";
-import { parseCookie } from '../utils/cookieParser'
+import { parseCookie } from "../utils/cookieParser";
 import useNotify from "../hooks/useNotify";
 
 const notify = useNotify;
@@ -40,12 +40,16 @@ export const Register = async (formdata) => {
 
 export const isAuth = async (cookie) => {
   try {
-    const token = parseCookie(cookie);
-    const response = await axios.get(URL.isAuth, { headers: { "Authorization": `Bearer ${token.Auth_Token}` } })
-    if (response.status == 200) return response.data;
+    if (cookie) {
+      const token = parseCookie(cookie);
+      const response = await axios.get(URL.isAuth, {
+        headers: { Authorization: `Bearer ${token.Auth_Token}` },
+      });
+      return response.status == 200 ? true : false;
+    } else {
+      return false;
+    }
   } catch (error) {
     console.log(error);
   }
-}
-
-
+};

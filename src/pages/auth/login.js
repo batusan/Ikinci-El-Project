@@ -12,9 +12,7 @@ export default function Login({ isProtected }) {
   const router = useRouter();
   const { isUserAuthenticated } = useAuthContext();
 
-  useEffect(() => {
-
-  }, []);
+  useEffect(() => {}, []);
 
   const clickHandle = () => {
     router.push("/auth/register");
@@ -44,9 +42,16 @@ export default function Login({ isProtected }) {
 
 export async function getServerSideProps(context) {
   const response = await isAuth(context.req.headers?.cookie);
-  console.log(response);
+  if (response) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/",
+      },
+      props: {},
+    };
+  }
   return {
     props: {},
-  }
+  };
 }
-

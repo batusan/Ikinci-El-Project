@@ -2,10 +2,11 @@ import { useRouter } from "next/router";
 import Logo from "../../assets/Icons/Logo";
 import ImagePanel from "../../components/Sign/ImagePanel";
 import RegisterForm from "../../components/Sign/RegisterForm";
+import { isAuth } from "../../services/AuthService";
 
 import styles from "../../styles/Sign.module.css";
 
-function Register() {
+export default function Register() {
   const router = useRouter();
   const clickHandle = () => {
     router.push("/auth/login");
@@ -14,7 +15,7 @@ function Register() {
     <div className={styles.sign}>
       <ImagePanel />
       <div className={styles.rightSide}>
-        <Logo width="224.49px" height="73.2px" class={styles.logo}/>
+        <Logo width="224.49px" height="73.2px" class={styles.logo} />
         <div className={styles.registerFormWrapper}>
           <span className={styles.registerText}>Üye Ol</span>
           <span className={styles.registerUnderText}>
@@ -33,4 +34,18 @@ function Register() {
   );
 }
 
-export default Register;
+export async function getServerSideProps(context) {
+  const response = await isAuth(context.req.headers?.cookie);
+  if (response) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/",
+      },
+      props: {},
+    };
+  }
+  return {
+    props: {},
+  };
+}

@@ -3,7 +3,6 @@ import commonStyles from "../../../styles/Common.module.css";
 import { baseURL } from "../../../constants/axios";
 
 function ProductCard(props) {
-  console.log(props.product);
   return (
     <div className={commonStyles.ProductCard}>
       <div className={commonStyles.ProductCardImage}>
