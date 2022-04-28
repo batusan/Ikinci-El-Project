@@ -1,10 +1,6 @@
-import axios, { URL } from "../Constants/axios";
+import axios, { URL } from "../constants/axios";
 import cookie from "js-cookie";
 import useNotify from "../hooks/useNotify";
-
-const ERRORS = {
-  "Auth.form.error.email.taken": "Email adresi",
-};
 
 const notify = useNotify;
 

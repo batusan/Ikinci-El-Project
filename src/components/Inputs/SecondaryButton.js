@@ -1,12 +1,12 @@
 import cls from "classnames";
 import styles from "../../styles/input.module.css";
 
-function Button(props) {
+function SecondaryButton(props) {
   return (
     <button
       style={{ width: props.width || 0, height: props.height || 0 }}
       className={
-        props.className ? cls(styles.button, props.className) : styles.button
+        props.className ? cls(styles.secondaryButton, props.className) : styles.secondaryButton
       }
       type={props.type || undefined}
       id={props.id || undefined}
@@ -16,4 +16,4 @@ function Button(props) {
   );
 }
 
-export default Button;
+export default SecondaryButton;

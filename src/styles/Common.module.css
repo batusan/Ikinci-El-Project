@@ -1,5 +1,111 @@
 .Navbar {
   height: 80px;
   /* UI Properties */
+  background: #ffffff 0% 0% no-repeat padding-box;
   opacity: 1;
+}
+
+.Navbar_inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.Navbar_logo {
+  display: flex;
+}
+
+.Banner {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.Category {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  font: normal normal 600 18px/24px Nunito;
+  letter-spacing: 0px;
+  opacity: 1;
+}
+
+.CategoryItem {
+  display: block;
+  color: #525252;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 14px;
+  width: 100%;
+}
+
+.CategoryItem:hover {
+  color: #4b9ce2;
+  cursor: pointer;
+  border-bottom: 2px solid #4b9ce2;
+}
+
+.Products {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 30px;
+  row-gap: 20px;
+  column-gap: 20px;
+
+  padding-bottom: 161px;
+}
+
+.ProductCard {
+  width: 280px;
+  height: 392px;
+  /* UI Properties */
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border-radius: 8px;
+  opacity: 1;
+  padding: 10px;
+}
+
+.ProductCardImage {
+  position: relative;
+  width: 260px;
+  height: 297px;
+  opacity: 1;
+}
+
+.ProductCardImage img {
+  border-radius: 8px;
+}
+
+.ProductSpecs {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+.ProductBrand {
+  text-align: left;
+  font: normal normal bold 15px/22px Nunito;
+  letter-spacing: 0px;
+  color: #4b9ce2;
+  opacity: 1;
+}
+
+.ProductColor {
+  text-align: left;
+  font: normal normal normal 13px/22px Nunito;
+  letter-spacing: 0px;
+  color: #3e3e3e;
+}
+
+.Bold {
+  font: normal normal bold 13px/22px Nunito;
+}
+
+.ProductPrice {
+  text-align: left;
+  font: normal normal bold 18px/22px Nunito;
+  letter-spacing: 0px;
+  color: #3e3e3e;
+  opacity: 1;
+
+  margin-top: 26px;
 }

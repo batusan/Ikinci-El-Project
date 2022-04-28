@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import Logo from "../../assets/Icons/Logo";
 import ImagePanel from "../../components/Sign/ImagePanel";
 import RegisterForm from "../../components/Sign/RegisterForm";
 
@@ -13,7 +14,7 @@ function Register() {
     <div className={styles.sign}>
       <ImagePanel />
       <div className={styles.rightSide}>
-        <div className={styles.logo} />
+        <Logo width="224.49px" height="73.2px" class={styles.logo}/>
         <div className={styles.registerFormWrapper}>
           <span className={styles.registerText}>Üye Ol</span>
           <span className={styles.registerUnderText}>

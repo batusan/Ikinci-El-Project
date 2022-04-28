@@ -98,15 +98,6 @@
 }
 
 .logo {
-  /* Layout Properties */
-  top: 134px;
-  left: 1257px;
-  width: 224px;
-  height: 73px;
-  /* UI Properties */
-  background: transparent url("../assets/images/logo.svg") 0% 0% no-repeat
-    padding-box;
-  opacity: 1;
   margin-bottom: 55px;
 }
 

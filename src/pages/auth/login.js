@@ -1,11 +1,20 @@
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 import ImagePanel from "../../components/Sign/ImagePanel";
 import LoginForm from "../../components/Sign/LoginForm";
-
+import Logo from "../../assets/Icons/Logo";
 import styles from "../../styles/Sign.module.css";
 
-function Login() {
+import { useAuthContext } from "../../contexts/AuthContext";
+
+export default function Login({ isProtected }) {
   const router = useRouter();
+  const { isUserAuthenticated } = useAuthContext();
+
+  useEffect(() => {
+    console.log(isUserAuthenticated());
+  }, []);
+
   const clickHandle = () => {
     router.push("/auth/register");
   };
@@ -13,12 +22,12 @@ function Login() {
     <div className={styles.sign}>
       <ImagePanel />
       <div className={styles.rightSide}>
-        <div className={styles.logo} />
+        <Logo width="224.49px" height="73.2px" class={styles.logo} />
         <div className={styles.registerFormWrapper}>
           <span className={styles.registerText}>Giriş Yap</span>
           <span className={styles.registerUnderText}>
             Fırsatlardan yararlanmak için giriş yap!
-          </span>
+          </span> 
           <LoginForm />
           <div className={styles.underText}>
             Hesabın yok mu?{" "}
@@ -31,5 +40,3 @@ function Login() {
     </div>
   );
 }
-
-export default Login;

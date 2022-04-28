@@ -37,6 +37,17 @@
   opacity: 1;
 }
 
+.secondaryButton {
+  background: #f0f8ff 0% 0% no-repeat padding-box;
+  border-radius: 8px;
+  border-color: transparent;
+  opacity: 1;
+  text-align: center;
+  font: normal normal bold 18px/24px Nunito;
+  letter-spacing: 0px;
+  color: #4b9ce2;
+}
+
 .label {
   font: normal normal normal 15px/20px Nunito;
 }
