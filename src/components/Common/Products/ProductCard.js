@@ -6,12 +6,14 @@ function ProductCard(props) {
   return (
     <div className={commonStyles.ProductCard}>
       <div className={commonStyles.ProductCardImage}>
-        <Image
-          src={`${baseURL}${props.product.image.url}`}
-          alt={props.product.name}
-          layout={"fill"}
-          priority
-        />
+        {props.product.image ? (
+          <Image
+            src={`${baseURL}${props.product.image?.url}`}
+            alt={props.product.name}
+            layout={"fill"}
+            priority
+          />
+        ) : undefined}
       </div>
       <div className={commonStyles.ProductSpecs}>
         <div className={commonStyles.ProductBrand}>{props.product.brand}</div>

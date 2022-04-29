@@ -1,4 +1,5 @@
 import cls from "classnames";
+import PlusIcon from "../../assets/Icons/PlusIcon";
 import styles from "../../styles/input.module.css";
 
 function Button(props) {

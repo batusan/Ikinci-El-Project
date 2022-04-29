@@ -38,7 +38,7 @@ export const Register = async (formdata) => {
   }
 };
 
-export const isAuth = async (cookie) => {
+export const getAuth = async (cookie) => {
   try {
     if (cookie) {
       const token = parseCookie(cookie);

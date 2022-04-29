@@ -10,10 +10,7 @@ function Banner() {
       <Image
         src={bannerImage}
         alt="Banner Image"
-        // width={500} automatically provided
-        // height={500} automatically provided
-        // blurDataURL="data:..." automatically provided
-        // placeholder="blur" // Optional blur-up while loading
+        priority
       />
     </div>
   );

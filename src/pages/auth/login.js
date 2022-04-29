@@ -1,22 +1,18 @@
 import { useRouter } from "next/router";
-import { useEffect } from "react";
 import ImagePanel from "../../components/Sign/ImagePanel";
 import LoginForm from "../../components/Sign/LoginForm";
 import Logo from "../../assets/Icons/Logo";
 import styles from "../../styles/Sign.module.css";
 
-import { useAuthContext } from "../../contexts/AuthContext";
-import { isAuth } from "../../services/AuthService";
+import { getAuth } from "../../services/AuthService";
 
 export default function Login({ isProtected }) {
   const router = useRouter();
-  const { isUserAuthenticated } = useAuthContext();
-
-  useEffect(() => {}, []);
 
   const clickHandle = () => {
     router.push("/auth/register");
   };
+
   return (
     <div className={styles.sign}>
       <ImagePanel />
@@ -41,7 +37,7 @@ export default function Login({ isProtected }) {
 }
 
 export async function getServerSideProps(context) {
-  const response = await isAuth(context.req.headers?.cookie);
+  const response = await getAuth(context.req.headers?.cookie);
   if (response) {
     return {
       redirect: {

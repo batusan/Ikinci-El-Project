@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import Logo from "../../assets/Icons/Logo";
 import ImagePanel from "../../components/Sign/ImagePanel";
 import RegisterForm from "../../components/Sign/RegisterForm";
-import { isAuth } from "../../services/AuthService";
+import { getAuth } from "../../services/AuthService";
 
 import styles from "../../styles/Sign.module.css";
 
@@ -35,7 +35,7 @@ export default function Register() {
 }
 
 export async function getServerSideProps(context) {
-  const response = await isAuth(context.req.headers?.cookie);
+  const response = await getAuth(context.req.headers?.cookie);
   if (response) {
     return {
       redirect: {

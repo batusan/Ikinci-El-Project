@@ -1,16 +1,14 @@
 import axios, { URL } from "../constants/axios";
 
-const type = {
-  products: URL.products,
-  category: URL.categories,
-};
-
 export const getProducts = async (categoryId) => {
   try {
     const query = categoryId ? `${URL.categories}/${categoryId}` : URL.products;
     const response = await axios.get(query);
     if (response.status === 200) {
-      return response;
+      console.log(response.data);
+      return categoryId
+        ? Object.values(response.data.products)
+        : response.data;
     } else {
       return 404;
     }
@@ -23,7 +21,7 @@ export const getCategories = async () => {
   try {
     const response = await axios.get(URL.categories);
     if (response.status === 200) {
-      return response;
+      return response.data;
     } else {
       return 404;
     }
