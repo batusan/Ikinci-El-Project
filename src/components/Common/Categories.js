@@ -6,10 +6,9 @@ function Categories(props) {
   const router = useRouter();
 
   const handleClick = (categoryId) => {
-    categoryId
-      ? router.push(router.push(`?category=${categoryId}`))
-      : router.push("/");
+    categoryId ? router.push(`?category=${categoryId}`) : router.push("/");
   };
+
   return (
     <div className={cls("container", commonStyles.Category)}>
       <div className={commonStyles.CategoryItem} onClick={(e) => handleClick()}>
