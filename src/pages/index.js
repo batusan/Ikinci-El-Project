@@ -21,7 +21,6 @@ export async function getServerSideProps(context) {
   const products = await getProducts(context.query?.category);
   const categories = await getCategories();
   const isAuth = await getAuth(context.req.headers?.cookie);
-
   return {
     props: { categories: categories, products: products, isAuth: isAuth },
   };

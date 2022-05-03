@@ -70,11 +70,6 @@ a {
   text-decoration: none;
 }
 
-input,
-label {
-  display: block;
-}
-
 .toast > div {
   justify-content: flex-start;
 }

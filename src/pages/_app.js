@@ -1,21 +1,10 @@
-import Head from "next/head";
 import { Toaster } from "react-hot-toast";
-import { useEffect } from "react";
 import { AuthProvider } from "../contexts/AuthContext";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
   return (
     <AuthProvider>
-      <Head>
-        {/* This ways to add css on global website use local asset folder withhtml link tag */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap"
-          rel="stylesheet"
-        />
-      </Head>
       <Toaster
         position="top-right"
         toastOptions={{

@@ -11,6 +11,7 @@ function Banner() {
         src={bannerImage}
         alt="Banner Image"
         priority
+        layout="responsive"
       />
     </div>
   );

@@ -12,4 +12,5 @@ export const URL = {
   categories: "/categories",
   products: "/products",
   isAuth: "/users/me"
+  
 };

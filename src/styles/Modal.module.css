@@ -1,0 +1,112 @@
+.wrapper {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalBackground {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  background: #4b9ce2 0% 0% no-repeat padding-box;
+  opacity: 0.7;
+}
+
+.modal {
+  width: 480px;
+  height: 461px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border-radius: 10px;
+  transform: scale(1);
+  padding: 20px;
+}
+
+.modal > * {
+  opacity: 1 !important;
+}
+
+.modalOfferHeader {
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+  font: normal normal bold 25px/23px Nunito;
+  letter-spacing: 0px;
+  color: #525252;
+  opacity: 1;
+}
+
+.modal .content {
+  padding: 1rem;
+}
+.modal .actions {
+  border-top: 1px solid #ccc;
+  background: #eee;
+  padding: 0.5rem 1rem;
+}
+.modal .actions button {
+  border: 0;
+  background: #78f89f;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  line-height: 1;
+}
+
+.modalProductInfo {
+  margin-top: 17px;
+  height: 60px;
+  width: 100%;
+  background: #f0f8ff 0% 0% no-repeat padding-box;
+  border-radius: 10px;
+  opacity: 1;
+  display: flex;
+  padding: 6px;
+}
+
+.modalImage {
+  width: 50px;
+  position: relative;
+  border-radius: 8px;
+  opacity: 1;
+}
+
+.modalImage img {
+  border-radius: 8px;
+}
+
+.modalName {
+  margin-left: 7px;
+  text-align: left;
+  font: normal normal normal 13px/16px Nunito;
+  letter-spacing: 0px;
+  color: #555555;
+  opacity: 1;
+}
+
+.modalPrice {
+  float: right;
+  text-align: left;
+  margin-left: auto;
+  margin-right: 11px;
+  font: normal normal bold 18px/32px Nunito;
+  letter-spacing: 0px;
+  color: #525252;
+  opacity: 1;
+  display: flex;
+  align-items: center;
+}
+
+.modalOfferButton{
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
