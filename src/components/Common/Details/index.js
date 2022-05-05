@@ -3,15 +3,31 @@ import commonStyles from "../../../styles/Common.module.css";
 import DetailSpecs from "./DetailSpecs";
 import DetailName from "./DetailName";
 import DetailImage from "./DetailImage";
-import Modal from "../../Modal/Modal";
+import OfferModal from "../../Modal/OfferModal";
 import DetailButtons from "./DetailButtons";
 import DetailsDescription from "./DetailsDescription";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useAuthContext } from "../../../contexts/AuthContext";
 import DetailOffer from "./DetailOffer";
+import Modal from "../../Modal/Modal";
 
 function Details(props) {
+  const { userDetail } = useAuthContext();
+  const [offerShow, setOfferShow] = useState(false);
   const [show, setShow] = useState(false);
   const [offerPrice, setOfferPrice] = useState();
+  const [myOffer, setMyOffer] = useState();
+
+  useEffect(() => {
+    if (userDetail) didIOffer();
+  }, [userDetail]);
+
+  const didIOffer = () => {
+    const data = props.product.offers.find(
+      (offer) => offer.users_permissions_user === userDetail.id
+    );
+    if (data) setMyOffer(data);
+  };
 
   return (
     <>
@@ -22,24 +38,26 @@ function Details(props) {
           <DetailSpecs product={props.product} />
           <div className={commonStyles.detailProductPrice}>
             {props.product.price} TL
-            <DetailOffer offers={props.product.offers} />
+            <DetailOffer myOffer={myOffer} />
           </div>
 
           <DetailButtons
-            show={show}
+            myOffer={myOffer}
             setShow={setShow}
+            setOfferShow={setOfferShow}
             product={props.product}
           />
           <DetailsDescription description={props.product.description} />
         </div>
       </div>
-      <Modal
+      <OfferModal
         offerPrice={offerPrice}
         setOfferPrice={setOfferPrice}
-        show={show}
-        setShow={setShow}
+        show={offerShow}
+        setShow={setOfferShow}
         product={props.product}
       />
+      <Modal show={show} setShow={setShow} product={props.product} />
     </>
   );
 }

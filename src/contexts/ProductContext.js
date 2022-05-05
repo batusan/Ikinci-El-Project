@@ -78,9 +78,47 @@ export function ProductProvider({ children }) {
     }
   };
 
+  const deleteOffer = async (data) => {
+    try {
+      const token = cookie.get("Auth_Token");
+      const response = await axios.delete(URL.offers + `/${data}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      if (response.status === 200) {
+        return response;
+      }
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
+
+  const buyProduct = async (id, data) => {
+    try {
+      const token = cookie.get("Auth_Token");
+      const response = await axios.put(URL.products + `/${id}`, data, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      if (response.status === 200) {
+        return response;
+      }
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
+
   return (
     <ProductContext.Provider
-      value={{ getColors, getBrands, getAddProductReq, createProduct ,setOffer }}
+      value={{
+        getColors,
+        getBrands,
+        getAddProductReq,
+        createProduct,
+        setOffer,
+        deleteOffer,
+        buyProduct,
+      }}
     >
       {children}
     </ProductContext.Provider>

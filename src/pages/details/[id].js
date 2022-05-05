@@ -20,6 +20,7 @@ export default function Details(props) {
 
 export async function getServerSideProps(context) {
   const isAuth = await getAuth(context.req.headers?.cookie);
+  console.log(isAuth)
   const product = await getProduct(context.params.id);
   return {
     props: { isAuth: isAuth, product: product },

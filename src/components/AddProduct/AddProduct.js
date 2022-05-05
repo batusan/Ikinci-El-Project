@@ -6,7 +6,7 @@ import AddDetail from "./AddDetail";
 import AddImage from "./AddImage";
 import { useProductContext } from "../../contexts/ProductContext";
 import { testRequest } from "../../services/TestService";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import useHandleError from "../../hooks/useHandleErrors";
 import { ProductSchema } from "../../schemas/ProductSchema";
 import useNotify from "../../hooks/useNotify";
@@ -16,7 +16,12 @@ function AddProduct() {
   const notify = useNotify;
   const { createProduct } = useProductContext();
   const { userDetail } = useAuthContext();
+  const [userId, setUserId] = useState(0);
   const [image, setImage] = useState();
+  useEffect(() => {
+    if (userDetail) setUserId(userDetail.id);
+  }, [userDetail]);
+
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -28,13 +33,13 @@ function AddProduct() {
       isOfferable: false,
       price: null,
       isSold: false,
-      users_permission_user: userDetail.id,
+      users_permission_user: userId,
     },
     validationSchema: ProductSchema,
     onSubmit: (values) => {
       let formData = new FormData();
       formData.append("data", JSON.stringify(values));
-      formData.append("files.image", image);     
+      formData.append("files.image", image);
       createProduct(formData);
     },
   });

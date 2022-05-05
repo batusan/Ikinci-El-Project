@@ -1,10 +1,15 @@
+
+import styles from "../../../styles/Common.module.css";
+
 function DetailOffer(props) {
-  console.log(props);
   return (
     <div>
-      {props.offers.map((offer) => {
-        return <div key={offer.id}>{offer.users_permissions_user}</div>;
-      })}
+      {props.myOffer && (
+        <div className={styles.myOffer}>
+          Verilen Teklif:{" "}
+          <span className={styles.myOfferPrice}>{props.myOffer.offerPrice} TL</span>
+        </div>
+      )}
     </div>
   );
 }
