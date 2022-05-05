@@ -31,7 +31,7 @@ function Button(props) {
           ? (e) => {
               router.push(props.redirect);
             }
-          : undefined
+          : props.onClick
       }
     >
       {props.icon ? props.icon : null} {iconHideOnMobile()}

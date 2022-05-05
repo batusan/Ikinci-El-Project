@@ -63,9 +63,24 @@ export function ProductProvider({ children }) {
     }
   };
 
+  const setOffer = async (data) => {
+    try {
+      const token = cookie.get("Auth_Token");
+      const response = await axios.post(URL.offers, data, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      if (response.status === 200) {
+        return response;
+      }
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
+
   return (
     <ProductContext.Provider
-      value={{ getColors, getBrands, getAddProductReq, createProduct }}
+      value={{ getColors, getBrands, getAddProductReq, createProduct ,setOffer }}
     >
       {children}
     </ProductContext.Provider>

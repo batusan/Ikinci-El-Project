@@ -145,3 +145,13 @@ a {
   color: #b1b1b1;
 }
 
+/* REMOVE ARROWS INSIDE NUMBER INPUT */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}

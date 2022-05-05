@@ -6,6 +6,7 @@ function Logo(props) {
       height={props.height || 0}
       viewBox="0 0 224.489 73.195"
       className={props.class}
+      onClick={props.onClick}
     >
       <g
         id="Group_6607"

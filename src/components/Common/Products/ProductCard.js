@@ -1,27 +1,39 @@
 import Image from "next/image";
 import commonStyles from "../../../styles/Common.module.css";
 import { baseURL } from "../../../constants/axios";
+import { useRouter } from "next/router";
+import NoImage from "../../../assets/images/noimage.jpg";
 
 function ProductCard(props) {
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push(`/details/${props.product.id}`);
+  };
+
   return (
-    <div className={commonStyles.ProductCard}>
-      {props.product.image ? (
-        <div className={commonStyles.ProductCardImage}>
-          {props.product.image.formats.small ? (
-            <Image
-              src={`${baseURL}${props.product.image?.formats.small.url}`}
-              alt={props.product.name}
-              layout={"fill"}
-            />
-          ) : (
-            <Image
-              src={`${baseURL}${props.product.image?.url}`}
-              alt={props.product.name}
-              layout={"fill"}
-            />
-          )}
-        </div>
-      ) : undefined}
+    <div className={commonStyles.ProductCard} onClick={handleClick}>
+      <div className={commonStyles.ProductCardImage}>
+        {props.product.image ? (
+          <>
+            {props.product.image.formats.small ? (
+              <Image
+                src={`${baseURL}${props.product.image?.formats.small.url}`}
+                alt={props.product.name}
+                layout={"fill"}
+              />
+            ) : (
+              <Image
+                src={`${baseURL}${props.product.image?.url}`}
+                alt={props.product.name}
+                layout={"fill"}
+              />
+            )}
+          </>
+        ) : (
+          <Image src={NoImage} alt={props.product.name} layout={"fill"} />
+        )}
+      </div>
 
       <div className={commonStyles.ProductSpecs}>
         <div className={commonStyles.ProductBrand}>{props.product.brand}</div>

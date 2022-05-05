@@ -25,7 +25,7 @@ function AddProductForm(props) {
 
   const fetchData = useCallback(async () => {
     //const data = await getColors().then((res) => setColors(res));
-    const data = await getAddProductReq().then((result) => {
+    await getAddProductReq().then((result) => {
       setColors(result[1].data);
       setBrands(result[0].data);
       setUsingStatus(result[2].data);
@@ -34,7 +34,7 @@ function AddProductForm(props) {
   }, []);
 
   return (
-    <form onSubmit={formik.handleSubmit}>
+    <form onSubmit={props.handleSubmit}>
       <div className={styles.inputWrapper}>
         <Label htmlFor="name" value="Ürün Adı" />
         <Input

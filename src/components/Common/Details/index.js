@@ -6,9 +6,13 @@ import DetailImage from "./DetailImage";
 import Modal from "../../Modal/Modal";
 import DetailButtons from "./DetailButtons";
 import DetailsDescription from "./DetailsDescription";
+import { useState } from "react";
+import DetailOffer from "./DetailOffer";
 
 function Details(props) {
-  console.log(props);
+  const [show, setShow] = useState(false);
+  const [offerPrice, setOfferPrice] = useState();
+
   return (
     <>
       <div className={cls("container", commonStyles.detailWrapper)}>
@@ -18,12 +22,24 @@ function Details(props) {
           <DetailSpecs product={props.product} />
           <div className={commonStyles.detailProductPrice}>
             {props.product.price} TL
+            <DetailOffer offers={props.product.offers} />
           </div>
-          <DetailButtons product={props.product} />
+
+          <DetailButtons
+            show={show}
+            setShow={setShow}
+            product={props.product}
+          />
           <DetailsDescription description={props.product.description} />
         </div>
       </div>
-      <Modal product={props.product} />
+      <Modal
+        offerPrice={offerPrice}
+        setOfferPrice={setOfferPrice}
+        show={show}
+        setShow={setShow}
+        product={props.product}
+      />
     </>
   );
 }

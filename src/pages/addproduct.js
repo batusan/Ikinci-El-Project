@@ -1,13 +1,18 @@
-import AddProduct from "../components/AddProduct/AddProduct";
+import { useEffect } from "react";
+import AddProductComponent from "../components/AddProduct/AddProduct";
 import Navbar from "../components/Common/Navbar";
+import { useAuthContext } from "../contexts/AuthContext";
 import { getAuth } from "../services/AuthService";
-import { getColors } from "../services/ProductService";
 
-function account(props) {
+function AddProduct(props) {
+  const { setUserDetail } = useAuthContext();
+  useEffect(() => {
+    setUserDetail(props.isAuth);
+  }, []);
   return (
     <>
       <Navbar isAuth={props.isAuth} />
-      <AddProduct />
+      <AddProductComponent />
     </>
   );
 }
@@ -28,4 +33,4 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default account;
+export default AddProduct;

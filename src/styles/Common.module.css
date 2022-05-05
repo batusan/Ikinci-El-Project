@@ -31,6 +31,11 @@
   background: #f0f8ff 0% 0% no-repeat padding-box;
 }
 
+.soldButton {
+  color: #faad60;
+  background: #fff0e2 0% 0% no-repeat padding-box;
+}
+
 .Banner {
   margin-top: 20px;
   margin-bottom: 30px;
@@ -126,7 +131,6 @@
   letter-spacing: 0px;
   color: #3e3e3e;
   opacity: 1;
-
   margin-top: 26px;
 }
 

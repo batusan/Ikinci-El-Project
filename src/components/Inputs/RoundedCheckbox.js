@@ -1,14 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "../../styles/input.module.css";
 function RoundedCheckbox(props) {
-  const [checked, setChecked] = useState(false);
-  const checkHandle = (e) => {
-    setChecked(!checked);
+  const change = props.onChange;
+  const handleChange = () => {
+    change(props.offer);
   };
   return (
-    <div className={styles.checkboxWrapper} onClick={checkHandle}>
+    <div className={styles.checkboxWrapper} onClick={handleChange}>
       <div className={styles.round}>
-        <input type="checkbox" className={styles.checkbox} checked={checked} />
+        <input
+          type="radio"
+          name={props.name}
+          className={styles.checkbox}
+          checked={props.checked}
+          onChange={handleChange}
+        />
         <label htmlFor="checkbox"></label>
       </div>
       <span className={styles.checkboxValue}>{props.value}</span>

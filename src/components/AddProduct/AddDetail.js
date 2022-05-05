@@ -5,7 +5,7 @@ function AddDetail(props) {
   return (
     <div className={styles.detailWrapper}>
       <div className={styles.title}>Ürün Detayları</div>
-      <AddProductForm formik={props.formik} />
+      <AddProductForm formik={props.formik} handleSubmit={props.handleSubmit} />
     </div>
   );
 }

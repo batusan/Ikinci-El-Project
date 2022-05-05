@@ -1,12 +1,18 @@
+import { useEffect } from "react";
 import Banner from "../components/Common/Banner";
 import Categories from "../components/Common/Categories";
 import Navbar from "../components/Common/Navbar";
 import Products from "../components/Common/Products/Products";
+import { useAuthContext } from "../contexts/AuthContext";
 import { getAuth } from "../services/AuthService";
 
 import { getCategories, getProducts } from "../services/ProductService";
 
 export default function Home(props) {
+  const { setUserDetail } = useAuthContext();
+  useEffect(() => {
+    setUserDetail(props.isAuth);
+  }, []);
   return (
     <div>
       <Navbar isAuth={props.isAuth} />

@@ -6,13 +6,18 @@ function OfferInput(props) {
       <label htmlFor="number">TL</label>
       <input
         style={{ width: props.width || 0, height: props.height || 0 }}
-        type="text"
-        id={props.id || undefined}
-        name={props.name || undefined}
+        type="number"
+        id={props.id || ""}
+        name={props.name || ""}
         className={styles.textInput}
-        onChange={props.onChange || undefined}
-        value={props.value || undefined}
-        placeholder={props.placeholder || undefined}
+        onChange={props.onChange || ""}
+        value={props.value || ""}
+        placeholder={props.placeholder || ""}
+        onKeyPress={(event) => {
+          if (!/[0-9]/.test(event.key)) {
+            event.preventDefault();
+          }
+        }}
       />
     </div>
   );

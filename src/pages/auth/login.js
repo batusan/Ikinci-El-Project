@@ -5,8 +5,15 @@ import Logo from "../../assets/Icons/Logo";
 import styles from "../../styles/Sign.module.css";
 
 import { getAuth } from "../../services/AuthService";
+import { useAuthContext } from "../../contexts/AuthContext";
+import { useEffect } from "react";
 
 export default function Login({ isProtected }) {
+  const { setUserDetail } = useAuthContext();
+  useEffect(() => {
+    setUserDetail(props.isAuth);
+  }, []);
+
   const router = useRouter();
 
   const clickHandle = () => {
@@ -37,8 +44,8 @@ export default function Login({ isProtected }) {
 }
 
 export async function getServerSideProps(context) {
-  const response = await getAuth(context.req.headers?.cookie);
-  if (response) {
+  const auth = await getAuth(context.req.headers?.cookie);
+  if (auth) {
     return {
       redirect: {
         permanent: false,
@@ -48,6 +55,6 @@ export async function getServerSideProps(context) {
     };
   }
   return {
-    props: {},
+    props: { auth: auth },
   };
 }

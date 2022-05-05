@@ -2,7 +2,7 @@ import cls from "classnames";
 import AccountBody from "./AccountBody";
 import AccountHeader from "./AccountHeader";
 
-function Account(props) {
+function AccountComponent(props) {
   return (
     <div className={cls("container")}>
       <AccountHeader email={props.auth.email} />
@@ -11,4 +11,4 @@ function Account(props) {
   );
 }
 
-export default Account;
+export default AccountComponent;
