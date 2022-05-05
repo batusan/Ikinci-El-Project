@@ -8,7 +8,7 @@ import { getAuth } from "../../services/AuthService";
 import { useAuthContext } from "../../contexts/AuthContext";
 import { useEffect } from "react";
 
-export default function Login({ isProtected }) {
+export default function Login(props) {
   const { setUserDetail } = useAuthContext();
   useEffect(() => {
     setUserDetail(props.isAuth);

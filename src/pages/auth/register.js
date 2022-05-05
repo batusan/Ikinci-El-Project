@@ -8,7 +8,7 @@ import { getAuth } from "../../services/AuthService";
 
 import styles from "../../styles/Sign.module.css";
 
-export default function Register() {
+export default function Register(props) {
   const { setUserDetail } = useAuthContext();
   useEffect(() => {
     setUserDetail(props.isAuth);
