@@ -1,6 +1,7 @@
 import AddProduct from "../components/AddProduct/AddProduct";
 import Navbar from "../components/Common/Navbar";
 import { getAuth } from "../services/AuthService";
+import { getColors } from "../services/ProductService";
 
 function account(props) {
   return (

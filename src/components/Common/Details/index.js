@@ -8,6 +8,7 @@ import DetailButtons from "./DetailButtons";
 import DetailsDescription from "./DetailsDescription";
 
 function Details(props) {
+  console.log(props);
   return (
     <>
       <div className={cls("container", commonStyles.detailWrapper)}>
@@ -18,7 +19,7 @@ function Details(props) {
           <div className={commonStyles.detailProductPrice}>
             {props.product.price} TL
           </div>
-          <DetailButtons product={props.product}/>
+          <DetailButtons product={props.product} />
           <DetailsDescription description={props.product.description} />
         </div>
       </div>

@@ -7,6 +7,8 @@ function OfferInput(props) {
       <input
         style={{ width: props.width || 0, height: props.height || 0 }}
         type="text"
+        id={props.id || undefined}
+        name={props.name || undefined}
         className={styles.textInput}
         onChange={props.onChange || undefined}
         value={props.value || undefined}

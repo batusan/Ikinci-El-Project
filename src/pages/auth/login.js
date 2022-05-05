@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
-import ImagePanel from "../../components/Sign/ImagePanel";
-import LoginForm from "../../components/Sign/LoginForm";
+import ImagePanel from "../../components/Auth/ImagePanel";
+import LoginForm from "../../components/Auth/LoginForm";
 import Logo from "../../assets/Icons/Logo";
 import styles from "../../styles/Sign.module.css";
 

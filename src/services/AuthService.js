@@ -45,7 +45,6 @@ export const getAuth = async (cookie) => {
       const response = await axios.get(URL.isAuth, {
         headers: { Authorization: `Bearer ${token.Auth_Token}` },
       });
-      console.log(response)
       return response.status == 200 ? response.data : false;
     } else {
       return false;

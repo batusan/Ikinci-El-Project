@@ -1,11 +1,16 @@
 import styles from "../../styles/AddProduct.module.css";
-import FileUploader from "../Inputs/FileUploader";
+import FileUploader from "../Inputs/DrapDropFileUploader";
 
-function AddImage() {
+function AddImage(props) {
   return (
-    <div className={styles.detailWrapper}>
+    <div className={styles.imageWrapper}>
       <div className={styles.title}>Ürün Görseli</div>
-      <FileUploader />
+      <FileUploader
+        onChange={(e) => {
+          props.setImage(e);
+        }}
+        value={props.image}
+      />
     </div>
   );
 }

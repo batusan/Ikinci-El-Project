@@ -12,8 +12,8 @@ function Input(props) {
       className={
         props.onError ? cls(styles.textInput, styles.errorInput) : styles.textInput
       }
-      onChange={props.onChange || undefined}
-      value={props.value || undefined}
+      onChange={props.onChange || ''}
+      value={props.value || ''}
       placeholder={props.placeholder || undefined}
     />
   );

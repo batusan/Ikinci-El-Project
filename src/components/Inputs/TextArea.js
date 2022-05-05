@@ -8,6 +8,8 @@ function TextArea(props) {
       cols={props.col}
       rows={props.row}
       placeholder={props.placeholder}
+      onChange={props.onChange || undefined}
+      value={props.value || undefined}
     ></textarea>
   );
 }
