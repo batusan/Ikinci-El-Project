@@ -39,8 +39,10 @@ function AddProduct() {
     onSubmit: (values) => {
       let formData = new FormData();
       formData.append("data", JSON.stringify(values));
-      formData.append("files.image", image);
-      createProduct(formData);
+      formData.append("files.image", image);  
+      createProduct(formData).then((res) => {
+        notify("SUCCESS", "Ürün başarıyla eklendi");
+      });
     },
   });
 

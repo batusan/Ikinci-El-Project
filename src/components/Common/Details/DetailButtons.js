@@ -8,7 +8,6 @@ function DetailButtons(props) {
 
   const handleDelete = async () => {
     const response = await deleteOffer(props.myOffer.id).then((res) => {
-      console.log(res);
       Router.reload(window.location.pathname);
     });
   };

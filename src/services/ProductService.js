@@ -1,4 +1,9 @@
-import axios, { URL } from "../constants/axios";
+import axios, { URL, requestAll } from "../constants/axios";
+import { parseCookie } from "../utils/cookieParser";
+
+export const pageConfig = {
+  index: [axios.get(URL.products + `?_limit=1500`), axios.get(URL.categories)],
+};
 
 export const getProducts = async (categoryId, limit = 1000) => {
   try {
@@ -48,5 +53,35 @@ export const getColors = async () => {
     }
   } catch (error) {
     console.log(error);
+  }
+};
+
+export const getIndexProps = async () => {
+  try {
+    const response = await requestAll(pageConfig.index);
+    if (response) {
+      return { products: response[0].data, categories: response[1].data };
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getAccountProps = async (userId, cookie) => {
+  try {
+    const token = parseCookie(cookie);
+    const response = await requestAll([
+      axios.get(URL.products + `?users_permissions_user=${userId}`, {
+        headers: { Authorization: `Bearer ${token.Auth_Token}` },
+      }),
+      axios.get(URL.offers + `?users_permissions_user=${userId}`, {
+        headers: { Authorization: `Bearer ${token.Auth_Token}` },
+      }),
+    ]);
+    if (response) {
+      return { products: response[0].data, offers: response[1].data };
+    }
+  } catch (error) {
+    console.log(error.response);
   }
 };

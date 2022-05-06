@@ -17,7 +17,7 @@ function Details(props) {
   const [show, setShow] = useState(false);
   const [offerPrice, setOfferPrice] = useState();
   const [myOffer, setMyOffer] = useState();
-
+  console.log(props);
   useEffect(() => {
     if (userDetail) didIOffer();
   }, [userDetail]);

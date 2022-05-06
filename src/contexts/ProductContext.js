@@ -10,6 +10,8 @@ export function ProductProvider({ children }) {
   const [brands, setBrands] = useState([]);
   const [usingStatus, setUsingStatus] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [offers, setOffers] = useState([]);
 
   const getColors = async () => {
     try {
@@ -111,6 +113,12 @@ export function ProductProvider({ children }) {
   return (
     <ProductContext.Provider
       value={{
+        offers,
+        products,
+        categories,
+        setOffers,
+        setProducts,
+        setCategories,
         getColors,
         getBrands,
         getAddProductReq,
