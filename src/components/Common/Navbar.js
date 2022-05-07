@@ -27,9 +27,11 @@ function Navbar(props) {
           {props.isAuth ? (
             <>
               <Button
-                className={commonStyles.secondaryButton}
+                className={cls(
+                  commonStyles.secondaryButton,
+                  commonStyles.miniButton
+                )}
                 icon={<PlusIcon className={commonStyles.navbarIcon} />}
-                width="124px"
                 height="40px"
                 value="Ürün Ekle"
                 hideOnSmall={true}
@@ -41,7 +43,7 @@ function Navbar(props) {
                 width="124px"
                 height="40px"
                 value="Hesabım"
-                redirect='/account'
+                redirect="/account"
               />
             </>
           ) : (

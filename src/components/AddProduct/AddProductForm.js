@@ -106,12 +106,12 @@ function AddProductForm(props) {
             list={usingStatus}
           />
         </div>
-        <div>
+        <div className={styles.OfferWrapper}>
           <Label htmlFor="price" value="Fiyat" />
           <OfferInput
             name="price"
-            width={"236px"}
             height={"45px"}
+            className={styles.OfferInput}
             onChange={formik.handleChange}
             value={formik.values.price}
           />
@@ -126,7 +126,6 @@ function AddProductForm(props) {
         </div>
         <Button
           type="submit"
-          width="235px"
           height="45px"
           value="Kaydet"
           className={styles.sendButton}

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import AccountMyOffer from "./AccountMyOffer";
 import AccountMyProducts from "./AccountMyProducts";
 
 function AccountOffers(props) {
@@ -8,13 +9,13 @@ function AccountOffers(props) {
   useEffect(() => {
     if (props.products) setProducts(props.products);
     if (props.offers) setOffers(props.offers);
-  }, [props.products, props.offers])
+  }, [props.products, props.offers]);
   return (
     <div>
       {props.type === "PRODUCT" ? (
-        <AccountMyProducts products={products} />
+        <AccountMyProducts type={props.type} products={products} />
       ) : (
-        "OFFERS"
+        <AccountMyOffer type={props.type} offers={offers} />
       )}
     </div>
   );

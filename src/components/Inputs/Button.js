@@ -8,7 +8,7 @@ function Button(props) {
   const size = useWindowSize();
 
   const iconHideOnMobile = () => {
-    if (size.width < 480 && props.hideOnSmall) {
+    if (size.width < 636 && props.hideOnSmall) {
       return undefined;
     } else {
       return props.value;
@@ -18,12 +18,13 @@ function Button(props) {
   return (
     <button
       style={{
-        width: props.width || 0,
-        height: props.height || 0,
+        width: props.width || undefined,
+        height: props.height || undefined,
       }}
       className={
         props.className ? cls(styles.button, props.className) : styles.button
       }
+      ref={props.ref || undefined}
       type={props.type || undefined}
       id={props.id || undefined}
       onClick={

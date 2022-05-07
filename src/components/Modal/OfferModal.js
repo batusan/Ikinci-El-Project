@@ -10,24 +10,31 @@ import OfferSelection from "./OfferSelection";
 import OfferInput from "../Inputs/OfferInput";
 import { useProductContext } from "../../contexts/ProductContext";
 import useNotify from "../../hooks/useNotify";
+import NoImage from "../../assets/images/noimage.jpg";
+import { useAuthContext } from "../../contexts/AuthContext";
 
 const OfferModal = (props) => {
   const notify = useNotify;
   const { setOffer } = useProductContext();
-
+  const { userDetail } = useAuthContext();
   const handleSubmit = async () => {
-    if (props.offerPrice > 0) {
-      const response = await setOffer({
-        product: props.product.id,
-        users_permissions_user: 6,
-        offerPrice: props.offerPrice,
-      }).then((res) => {
-        notify("SUCCESS", "Teklif başarıyla verildi.");
-        props.setShow(false);
-        Router.reload(window.location.pathname);
-      });
+    if (userDetail.id) {
+      if (props.offerPrice > 0) {
+        await setOffer({
+          product: props.product.id,
+          users_permissions_user: userDetail.id,
+          offerPrice: props.offerPrice,
+        }).then((res) => {
+          notify("SUCCESS", "Teklif başarıyla verildi.");
+          props.setShow(false);
+          Router.reload(window.location.pathname);
+        });
+      } else {
+        notify("ERROR", "Yaptığınız teklif hatalı. Tekrar deneyin");
+      }
     } else {
-      notify("ERROR", "Yaptığınız teklif hatalı. Tekrar deneyin");
+      notify("ERROR", "Giriş yapmalısınız. Tekrar deneyin");
+      props.setShow(false);
     }
   };
 
@@ -50,18 +57,26 @@ const OfferModal = (props) => {
         </div>
         <div className={styles.modalProductInfo}>
           <div className={styles.modalImage}>
-            {props.product.image.formats.small ? (
-              <Image
-                src={baseURL + props.product.image.formats.small.url}
-                alt={props.product.name}
-                layout={"fill"}
-              />
+            {props.product.image ? (
+              <>
+                {props.product.image.formats.small ? (
+                  <Image
+                    src={`${baseURL}${props.product.image?.formats.small.url}`}
+                    alt={props.product.name}
+                    layout={"fill"}
+                    priority
+                  />
+                ) : (
+                  <Image
+                    src={`${baseURL}${props.product.image?.url}`}
+                    alt={props.product.name}
+                    layout={"fill"}
+                    priority
+                  />
+                )}
+              </>
             ) : (
-              <Image
-                src={baseURL + props.product.image.url}
-                alt={props.product.name}
-                layout={"fill"}
-              />
+              <Image src={NoImage} alt={props.product.name} layout={"fill"} />
             )}
           </div>
           <div className={styles.modalName}>{props.product.name}</div>
@@ -76,7 +91,7 @@ const OfferModal = (props) => {
             height="45px"
             width="100%"
             placeholder={"Teklif Belirle"}
-            onChange={(e) => props.setOfferPrice(parseInt(e.target.value))}
+            onChange={(e) => props.setOfferPrice(e.target.value)}
             value={props.offerPrice}
           />
         </div>
@@ -84,7 +99,7 @@ const OfferModal = (props) => {
           <Button
             width="315px"
             height="45px"
-            value="Satın Al"
+            value="Onayla"
             className={commonStyles.primaryButton}
             onClick={handleSubmit}
           />

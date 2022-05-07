@@ -28,7 +28,6 @@ export async function getServerSideProps(context) {
       props: {},
     };
   }
-  console.log(isAuth)
   return {
     props: { isAuth: isAuth },
   };

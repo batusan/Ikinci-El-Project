@@ -2,7 +2,7 @@ import axios, { URL, requestAll } from "../constants/axios";
 import { parseCookie } from "../utils/cookieParser";
 
 export const pageConfig = {
-  index: [axios.get(URL.products + `?_limit=1500`), axios.get(URL.categories)],
+  index: [axios.get(URL.products + `?_limit=15`), axios.get(URL.categories)],
 };
 
 export const getProducts = async (categoryId, limit = 1000) => {

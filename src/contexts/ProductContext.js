@@ -110,12 +110,57 @@ export function ProductProvider({ children }) {
     }
   };
 
+  const acceptOffer = async (id, data) => {
+    try {
+      const token = cookie.get("Auth_Token");
+      const response = await axios.put(URL.offers + `/${id}`, data, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      if (response.status === 200) {
+        return response;
+      }
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
+
+  const declineOffer = async (id, data) => {
+    try {
+      const token = cookie.get("Auth_Token");
+      const response = await axios.put(URL.offers + `/${id}`, data, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      if (response.status === 200) {
+        return response;
+      }
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
+
+  const addMoreProducts = async (start) => {
+    try {
+      const response = await axios.get(
+        URL.products + `?_limit=15&_start=${start}`
+      );
+      if (response.status === 200) {
+        setProducts((oldState) => oldState.concat(response.data));
+        return response;
+      }
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
+
   return (
     <ProductContext.Provider
       value={{
         offers,
         products,
         categories,
+        addMoreProducts,
         setOffers,
         setProducts,
         setCategories,
@@ -126,6 +171,8 @@ export function ProductProvider({ children }) {
         setOffer,
         deleteOffer,
         buyProduct,
+        acceptOffer,
+        declineOffer,
       }}
     >
       {children}

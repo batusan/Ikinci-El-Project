@@ -16,7 +16,6 @@ function DetailButtons(props) {
     <div className={commonStyles.buttonWrapper}>
       {props.product.isSold ? (
         <Button
-          width="235px"
           height="45px"
           value="Bu ürün satışta değil"
           className={commonStyles.soldButton}
@@ -24,7 +23,6 @@ function DetailButtons(props) {
       ) : (
         <>
           <Button
-            width="235px"
             height="45px"
             value="Satın Al"
             className={commonStyles.primaryButton}
@@ -34,7 +32,6 @@ function DetailButtons(props) {
             <>
               {props.myOffer ? (
                 <Button
-                  width="235px"
                   height="45px"
                   value="Teklifi Geri Çek"
                   className={commonStyles.secondaryButton}
@@ -42,7 +39,6 @@ function DetailButtons(props) {
                 />
               ) : (
                 <Button
-                  width="235px"
                   height="45px"
                   value="Teklif Ver"
                   className={commonStyles.secondaryButton}

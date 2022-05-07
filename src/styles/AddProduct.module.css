@@ -1,10 +1,11 @@
 .wrapper {
-  height: 812px;
+  height: fit-content;
   background: #ffffff 0% 0% no-repeat padding-box;
   border-radius: 8px;
   opacity: 1;
   margin-top: 20px;
   display: flex;
+  flex-direction: column;
   padding: 30px;
   position: relative;
 }
@@ -15,12 +16,13 @@
 
 .detailWrapper {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap;
-  width: 730px;
+  width: 100%;
 }
 
 .line {
+  display: none;
   border-left: 1px solid #f2f2f2;
   height: 500px;
   width: 6px;
@@ -31,7 +33,8 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  width: 40%;
+  width: 100%;
+  margin-bottom: 75px;
 }
 
 .title {
@@ -48,7 +51,7 @@
 }
 
 .halfInputWrapper {
-  width: 48%;
+  width: 100%;
 }
 
 .categoryWrapper {
@@ -59,12 +62,21 @@
 }
 
 .sendButton {
-  bottom: 0;
-  right: 0;
+  bottom: 10px;
+  left: 50%;
+  transform: translate(-50%, 0);
   position: absolute;
+  width: calc(100% - 20px);
   color: #fff;
-  margin: 30px;
   background: #4b9ce2 0% 0% no-repeat padding-box;
+}
+
+.OfferWrapper {
+  width: 100%;
+}
+
+.OfferInput {
+  width: 100%;
 }
 
 .toggle {
@@ -125,4 +137,40 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+@media (min-width: 1200px) {
+  .wrapper {
+    flex-direction: row;
+    height: 812px;
+  }
+  .line {
+    display: block;
+  }
+  .halfInputWrapper {
+    width: 47%;
+  }
+  .sendButton {
+    bottom: 0;
+    right: 0;
+    margin: 30px;
+    transform: none;
+    width: 315px;
+    margin-left: auto;
+  }
+  .detailWrapper {
+    flex-direction: column;
+  }
+  .imageWrapper {
+    margin-bottom: 0;
+  }
+  .OfferWrapper {
+    width: 236px;
+  }
+
+  .OfferInput {
+    width: 100%;
+  }
 }

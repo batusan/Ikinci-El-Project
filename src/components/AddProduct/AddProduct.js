@@ -18,8 +18,10 @@ function AddProduct() {
   const { userDetail } = useAuthContext();
   const [userId, setUserId] = useState(0);
   const [image, setImage] = useState();
+
   useEffect(() => {
-    if (userDetail) setUserId(userDetail.id);
+    if (userDetail)
+      formik.setFieldValue("users_permissions_user", userDetail.id);
   }, [userDetail]);
 
   const formik = useFormik({
@@ -33,26 +35,34 @@ function AddProduct() {
       isOfferable: false,
       price: null,
       isSold: false,
-      users_permission_user: userId,
+      users_permissions_user: userId,
     },
     validationSchema: ProductSchema,
     onSubmit: (values) => {
       let formData = new FormData();
       formData.append("data", JSON.stringify(values));
-      formData.append("files.image", image);  
+      formData.append("files.image", image);
+
       createProduct(formData).then((res) => {
         notify("SUCCESS", "Ürün başarıyla eklendi");
+        
+        console.log(res);
       });
     },
   });
 
-  const HandleSubmit = async (e) => {
-    useHandleError(e, formik);
-    ControlImage(image);
-  };
+  function HandleSubmit(e) {
+    e.preventDefault();
+    const formEvent = ControlImage(image, e);
+    useHandleError(formEvent, formik);
+  }
 
-  const ControlImage = (image) => {
-    if (!image) notify("ERROR", "Resim alanı zorunludur.");
+  const ControlImage = (image, formEvent) => {
+    if (!image) {
+      formEvent = false;
+    } else {
+      return formEvent;
+    }
   };
 
   return (

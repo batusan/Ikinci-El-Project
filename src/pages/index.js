@@ -11,13 +11,15 @@ import { getIndexProps } from "../services/ProductService";
 export default function Home(props) {
   const [filter, setFilter] = useState();
   const { setUserDetail } = useAuthContext();
-  const { products, categories, setCategories, setProducts } =
-    useProductContext();
+  const { products, categories, setCategories, setProducts } = useProductContext();
+    
+
   useEffect(() => {
     setUserDetail(props.isAuth);
     setProducts(props.products);
     setCategories(props.categories);
   }, []);
+
   return (
     <div>
       <Navbar isAuth={props.isAuth} />

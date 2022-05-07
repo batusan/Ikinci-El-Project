@@ -18,7 +18,7 @@ function OfferSelection(props) {
 
   const calculateOffer = (offer) => {
     const calculatedOffer = (props.productPrice * offer) / 100;
-    setOfferedPrice(calculatedOffer);
+    setOfferedPrice((Math.round(calculatedOffer * 100) / 100).toFixed(2));
   };
 
   return (

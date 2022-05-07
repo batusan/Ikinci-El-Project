@@ -10,14 +10,25 @@ import { useEffect, useState } from "react";
 import { useAuthContext } from "../../../contexts/AuthContext";
 import DetailOffer from "./DetailOffer";
 import Modal from "../../Modal/Modal";
+import Router from "next/router";
+import { useProductContext } from "../../../contexts/ProductContext";
 
 function Details(props) {
   const { userDetail } = useAuthContext();
+  const { buyProduct } = useProductContext();
   const [offerShow, setOfferShow] = useState(false);
   const [show, setShow] = useState(false);
   const [offerPrice, setOfferPrice] = useState();
   const [myOffer, setMyOffer] = useState();
-  console.log(props);
+
+  const handleBuy = async () => {
+    await buyProduct(props.product.id, {
+      isSold: true,
+    }).then((res) => {
+      Router.reload(window.location.pathname);
+    });
+  };
+
   useEffect(() => {
     if (userDetail) didIOffer();
   }, [userDetail]);
@@ -57,7 +68,12 @@ function Details(props) {
         setShow={setOfferShow}
         product={props.product}
       />
-      <Modal show={show} setShow={setShow} product={props.product} />
+      <Modal
+        onClick={handleBuy}
+        show={show}
+        setShow={setShow}
+        product={props.product}
+      />
     </>
   );
 }

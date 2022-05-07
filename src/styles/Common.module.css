@@ -14,6 +14,7 @@
 
 .Navbar_logo {
   display: flex;
+  cursor: pointer;
 }
 
 .navbarIconWrapper {
@@ -29,6 +30,10 @@
 .secondaryButton {
   color: #4b9ce2;
   background: #f0f8ff 0% 0% no-repeat padding-box;
+}
+
+.miniButton {
+  width: 40px;
 }
 
 .soldButton {
@@ -71,17 +76,17 @@
 
 .Products {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   margin-top: 30px;
-  row-gap: 20px;
-  column-gap: 20px;
-
+  row-gap: 9px;
+  column-gap: 9px;
   padding-bottom: 161px;
 }
 
 .ProductCard {
-  width: 280px;
-  height: 392px;
+  width: calc(100% * (1 / 2) - 9px);
+  height: 266px;
   /* UI Properties */
   background: #ffffff 0% 0% no-repeat padding-box;
   border-radius: 8px;
@@ -91,8 +96,8 @@
 
 .ProductCardImage {
   position: relative;
-  width: 260px;
-  height: 297px;
+  width: auto;
+  height: 184px;
   opacity: 1;
 }
 
@@ -131,24 +136,25 @@
   letter-spacing: 0px;
   color: #3e3e3e;
   opacity: 1;
-  margin-top: 26px;
+  margin-top: 12px;
 }
 
 .detailWrapper {
   display: flex;
+  flex-direction: column;
   margin-top: 20px;
-  height: 71vh;
   background: #ffffff 0% 0% no-repeat padding-box;
   border-radius: 8px;
   opacity: 1;
-  padding: 15px;
+  padding: 6px;
+  margin-bottom: 60px;
 }
 
 .detailImage {
   position: relative;
   color: red;
-  height: 100%;
-  width: 47%;
+  height: 362px;
+  width: auto;
 }
 
 .detailImage img {
@@ -158,17 +164,17 @@
 .detailProduct {
   display: flex;
   flex-direction: column;
-  margin-left: 60px;
   padding-top: 14px;
-  width: 32%;
+  width: 100%;
 }
 
 .detailProductName {
   text-align: left;
-  font: normal normal normal 34px/23px Nunito;
-  letter-spacing: 0px;
+  font: normal normal normal 18px/23px Nunito;
   color: #555555;
   margin-bottom: 5px;
+  line-height: 30px;
+  order: -2;
 }
 
 .detailProductSpecs {
@@ -200,13 +206,29 @@
   letter-spacing: 0px;
   color: #525252;
   opacity: 1;
-
-  margin: 30px 0;
+  order: -1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 10px 0;
 }
 
 .buttonWrapper {
   display: flex;
-  gap: 5px;
+  padding: 10px;
+  gap: 10px;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 0px -3px 8px #1e364814;
+}
+
+.buttonWrapper button {
+  width: calc(100%);
+  padding: 10px 0px;
 }
 
 .DescriptionWrapper {
@@ -241,7 +263,6 @@
   color: #b1b1b1;
   opacity: 1;
   padding: 10px;
-  margin-top: 10px;
 }
 
 .myOfferPrice {
@@ -249,4 +270,119 @@
   letter-spacing: 0px;
   color: #525252;
   opacity: 1;
+}
+
+@media (min-width: 376px) {
+  .Products {
+    row-gap: 20px;
+    column-gap: 20px;
+  }
+  .ProductCardImage {
+    height: 184px;
+  }
+  .ProductCard {
+    width: calc(100% * (1 / 2) - 20px);
+    height: 266px;
+  }
+}
+
+@media (min-width: 636px) {
+  .miniButton {
+    width: 127px;
+  }
+  .Products {
+    row-gap: 20px;
+    column-gap: 20px;
+  }
+  .ProductCardImage {
+    height: 297px;
+  }
+  .ProductCard {
+    width: calc(100% * (1 / 2) - 20px);
+    height: 392px;
+  }
+  .ProductPrice {
+    margin-top: 26px;
+  }
+  .detailProductName {
+    font: normal normal normal 34px/23px Nunito;
+    line-height: 30px;
+  }
+  .detailProductPrice {
+    order: 0;
+  }
+  .buttonWrapper {
+    position: relative;
+    background-color: transparent;
+    box-shadow: none;
+    padding: 0;
+    width: 62%;
+  }
+  .myOffer {
+    width: max-content;
+    padding: 10px 40px 10px 10px;
+  }
+  .detailWrapper {
+    flex-direction: row;
+    height: 71vh;
+    padding: 16px;
+  }
+  .detailProductPrice {
+    flex-direction: column;
+    align-items: baseline;
+    margin: 30px 0;
+    gap: 5px;
+  }
+  .detailProduct {
+    margin-left: 60px;
+  }
+  .detailImage {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
+}
+
+@media (min-width: 768px) {
+  .Products {
+    row-gap: 20px;
+    column-gap: 20px;
+  }
+  .ProductCardImage {
+    height: 297px;
+  }
+  .ProductCard {
+    width: calc(100% * (1 / 2) - 20px);
+    height: 392px;
+  }
+}
+
+@media (min-width: 992px) {
+  .ProductCard {
+    width: calc(100% * (1 / 3) - 20px);
+    height: 392px;
+  }
+  .ProductCardImage {
+    height: 297px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .ProductCard {
+    width: calc(100% * (1 / 4) - 20px);
+    height: 392px;
+  }
+  .ProductCardImage {
+    height: 297px;
+  }
+}
+
+@media (min-width: 1500px) {
+  .ProductCard {
+    width: calc(100% * (1 / 5) - 20px);
+    height: 392px;
+  }
+  .ProductCardImage {
+    height: 297px;
+  }
 }

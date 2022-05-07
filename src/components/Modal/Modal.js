@@ -1,21 +1,11 @@
 import styles from "../../styles/Modal.module.css";
 import commonStyles from "../../styles/Common.module.css";
 import Button from "../Inputs/Button";
-import { useProductContext } from "../../contexts/ProductContext";
-import Router from "next/router";
-function Modal(props) {
-  const { buyProduct } = useProductContext();
 
+function Modal(props) {
   if (!props.show) {
     return null;
   }
-  const handleBuy = async () => {
-    const response = await buyProduct(props.product.id, {
-      isSold: true,
-    }).then((res) => {
-      Router.reload(window.location.pathname);
-    });
-  };
 
   return (
     <div className={styles.wrapper}>
@@ -39,7 +29,7 @@ function Modal(props) {
             height="45px"
             value="Satın Al"
             className={commonStyles.primaryButton}
-            onClick={handleBuy}
+            onClick={props.onClick}
           />
         </div>
       </div>
