@@ -6,6 +6,10 @@ Think an application where you can post secondhand items for sale and race with 
 
 A SecondHand Project written in Nextjs
 
+Check Demo : [Here](https://ikinci-el-batusan.vercel.app/ "Here")
+
+![Vercel Badge](https://therealsujitk-vercel-badge.vercel.app/?app=ikinci-el-project&style=for-the-badge&logo=false "Vercel")
+
 ## Contents
 
 - [About](#about)
@@ -19,7 +23,6 @@ A SecondHand Project written in Nextjs
 ## About
 
 A SecondHand Project , A platform where users can easily sell second-hand products to each other. They can make offers to get great products cheap.
-
 
 ## Features
 
