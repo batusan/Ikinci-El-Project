@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import AccountComponent from "../components/Account/AccountComponent";
-import Navbar from "../components/Common/Navbar";
-import { useUserContext } from "../contexts/UserContext";
-import { getAuth } from "../services/AuthService";
-import { getAccountProps } from "../services/ProductService";
+import AccountComponent from "@/components/Account/AccountComponent";
+import Navbar from "@/components/Common/Navbar";
+import { useUserContext } from "@/contexts/UserContext";
+import { getAuth } from "@/services/AuthService";
+import { getAccountProps } from "@/services/ProductService";
 
 function Account(props) {
   const { setUserDetail, setMyProducts, setMyOffers } = useUserContext();

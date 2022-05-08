@@ -1,7 +1,8 @@
 import cls from "classnames";
 import { useRouter } from "next/router";
-import useWindowSize from "../../hooks/useWindowSize";
-import styles from "../../styles/input.module.css";
+import useWindowSize from "@/hooks/useWindowSize";
+import styles from "@/styles/input.module.css";
+import Spinner from "./Spinner";
 
 function Button(props) {
   const router = useRouter();
@@ -24,9 +25,11 @@ function Button(props) {
       className={
         props.className ? cls(styles.button, props.className) : styles.button
       }
+      aria-label={props.name || undefined}
       ref={props.ref || undefined}
       type={props.type || undefined}
       id={props.id || undefined}
+      disabled={props.disabled || undefined}
       onClick={
         props.redirect
           ? (e) => {
@@ -35,7 +38,13 @@ function Button(props) {
           : props.onClick
       }
     >
-      {props.icon ? props.icon : null} {iconHideOnMobile()}
+      {props.disabled ? (
+        <Spinner />
+      ) : (
+        <>
+          {props.icon ? props.icon : null} {iconHideOnMobile()}
+        </>
+      )}
     </button>
   );
 }

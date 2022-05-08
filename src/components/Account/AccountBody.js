@@ -1,8 +1,8 @@
-import styles from "../../styles/Account.module.css";
+import styles from "@/styles/Account.module.css";
 import { useState } from "react";
 import AccountCategories from "./AccountCategories";
 import AccountOffers from "./AccountOffers";
-import { useUserContext } from "../../contexts/UserContext";
+import { useUserContext } from "@/contexts/UserContext";
 
 function AccountBody() {
   const [renderType, setRenderType] = useState("PRODUCT");

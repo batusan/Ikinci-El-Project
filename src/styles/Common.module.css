@@ -55,7 +55,15 @@
   opacity: 1;
   overflow-x: scroll;
   overflow-y: hidden;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
   white-space: nowrap;
+}
+
+.Category::-webkit-scrollbar {
+  /* WebKit */
+  width: 0;
+  height: 0;
 }
 
 .CategoryItem {
@@ -107,27 +115,28 @@
 
 .ProductSpecs {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   margin-top: 5px;
 }
 
 .ProductBrand {
   text-align: left;
-  font: normal normal bold 15px/22px Nunito;
+  font: normal normal bold 15px/12px Nunito;
   letter-spacing: 0px;
   color: #4b9ce2;
-  opacity: 1;
+  margin-top: 5px;
 }
 
 .ProductColor {
   text-align: left;
-  font: normal normal normal 13px/22px Nunito;
+  font: normal normal normal 10px/22px Nunito;
   letter-spacing: 0px;
   color: #3e3e3e;
 }
 
 .Bold {
-  font: normal normal bold 13px/22px Nunito;
+  font: normal normal bold 10px/22px Nunito;
 }
 
 .ProductPrice {
@@ -136,7 +145,6 @@
   letter-spacing: 0px;
   color: #3e3e3e;
   opacity: 1;
-  margin-top: 12px;
 }
 
 .detailWrapper {
@@ -272,6 +280,24 @@
   opacity: 1;
 }
 
+.notFound {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  height: 70vh;
+  font: normal normal normal 40px/20px Nunito;
+  line-height: 40px;
+  border-radius: 8px;
+  padding: 6px;
+  margin-bottom: 60px;
+  justify-content: center;
+}
+
+.notFoundInnerText {
+  margin-top: 15px;
+  font: normal normal normal 20px/20px Nunito;
+}
+
 @media (min-width: 376px) {
   .Products {
     row-gap: 20px;
@@ -297,12 +323,25 @@
   .ProductCardImage {
     height: 297px;
   }
+  .ProductSpecs {
+    flex-direction: row;
+  }
   .ProductCard {
     width: calc(100% * (1 / 2) - 20px);
     height: 392px;
   }
   .ProductPrice {
     margin-top: 26px;
+  }
+  .ProductBrand {
+    margin-top: 0;
+    font: normal normal bold 15px/22px Nunito;
+  }
+  .ProductColor {
+    font: normal normal normal 13px/22px Nunito;
+  }
+  .Bold {
+    font: normal normal bold 13px/22px Nunito;
   }
   .detailProductName {
     font: normal normal normal 34px/23px Nunito;

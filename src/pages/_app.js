@@ -1,7 +1,7 @@
 import { Toaster } from "react-hot-toast";
-import { UserProvider } from "../contexts/UserContext";
-import { ProductProvider } from "../contexts/ProductContext";
-import "../styles/globals.css";
+import { UserProvider } from "@/contexts/UserContext";
+import { ProductProvider } from "@/contexts/ProductContext";
+import "@/styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }) {
             className: "toast",
 
             error: {
-              duration: 3000,
+              duration: 6000,
               theme: {
                 primary: "red",
                 secondary: "black",
@@ -31,7 +31,7 @@ function MyApp({ Component, pageProps }) {
               },
             },
             success: {
-              duration: 3000,
+              duration: 6000,
               theme: {
                 primary: "green",
                 secondary: "black",

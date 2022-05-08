@@ -1,4 +1,4 @@
-import styles from "../../styles/AddProduct.module.css";
+import styles from "@/styles/AddProduct.module.css";
 import FileUploader from "../Inputs/DrapDropFileUploader";
 
 function AddImage(props) {

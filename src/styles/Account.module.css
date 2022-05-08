@@ -8,7 +8,29 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   padding: 16px;
+}
+
+.logoutButton {
+  color: #4b9ce2;
+  background: #f0f8ff 0% 0% no-repeat padding-box;
+}
+
+.miniButton {
+  width: 127px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  fill: white;
+}
+
+.HeaderLeft {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-break: auto;
 }
 
 .HeaderProfileImage {
@@ -68,11 +90,16 @@
   display: flex;
 }
 
+.OfferName {
+  cursor: pointer;
+}
+
 .OfferImage {
   width: 84px;
   height: 78px;
   position: relative;
   margin-right: 10px;
+  cursor: pointer;
 }
 
 .OfferImage img {
@@ -163,7 +190,7 @@
   }
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 635px) {
   .img {
     display: none;
   }
@@ -173,6 +200,9 @@
   }
   .registerFormWrapper {
     width: 75%;
+  }
+  .miniButton {
+    width: 40px;
   }
 }
 

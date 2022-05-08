@@ -1,10 +1,10 @@
 import Input from "../Inputs/Input";
 import Label from "../Inputs/Label";
-import styles from "../../styles/AddProduct.module.css";
 import TextArea from "../Inputs/TextArea";
 import Select from "../Inputs/CustomSelect";
 import OfferInput from "../Inputs/OfferInput";
-import { useProductContext } from "../../contexts/ProductContext";
+import styles from "@/styles/AddProduct.module.css";
+import { useProductContext } from "@/contexts/ProductContext";
 
 import { useState, useEffect, useCallback } from "react";
 import Button from "../Inputs/Button";
@@ -12,7 +12,7 @@ import Checkbox from "../Inputs/Checkbox";
 
 function AddProductForm(props) {
   const formik = props.formik;
-  const { getAddProductReq } = useProductContext();
+  const { getAddProductReq, loading } = useProductContext();
 
   const [colors, setColors] = useState([]);
   const [brands, setBrands] = useState([]);
@@ -44,7 +44,7 @@ function AddProductForm(props) {
           name="name"
           maxLength={100}
           onChange={formik.handleChange}
-          value={formik.values.name}
+          value={formik.values.name || ""}
           placeholder="Örnek: Iphone 12 Pro Max"
         />
       </div>
@@ -131,6 +131,7 @@ function AddProductForm(props) {
           height="45px"
           value="Kaydet"
           className={styles.sendButton}
+          disabled={loading}
         />
       </div>
     </form>

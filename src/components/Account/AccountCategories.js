@@ -1,4 +1,4 @@
-import styles from "../../styles/Account.module.css";
+import styles from "@/styles/Account.module.css";
 
 function AccountCategories(props) {
   return (

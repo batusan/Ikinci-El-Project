@@ -1,19 +1,19 @@
 import cls from "classnames";
 import { useFormik } from "formik";
 import { useRouter } from "next/router";
-import { LoginSchema } from "../../schemas/LoginSchema";
-
-import utilStyles from "../../styles/utilities.module.css";
-import signStyles from "../../styles/Sign.module.css";
+import { LoginSchema } from "@/schemas/LoginSchema";
+import utilStyles from "@/styles/utilities.module.css";
+import signStyles from "@/styles/Sign.module.css";
+import { Login } from "@/services/AuthService";
+import useHandleError from "@/hooks/useHandleErrors";
+import { useUserContext } from "@/contexts/UserContext";
 
 import Input from "../Inputs/Input";
 import Label from "../Inputs/Label";
 import Button from "../Inputs/Button";
 
-import { Login } from "../../services/AuthService";
-import useHandleError from "../../hooks/useHandleErrors";
-
 export default function LoginForm() {
+  const { loading, setLoading } = useUserContext();
   const router = useRouter();
   const formik = useFormik({
     initialValues: {
@@ -22,14 +22,20 @@ export default function LoginForm() {
     },
     validationSchema: LoginSchema,
     onSubmit: (values) => {
+      setLoading(true);
       handleAsyncSubmit(values);
     },
   });
 
   const handleAsyncSubmit = async (values) => {
-    await Login(values).then((res) => {
-      if (res) router.push("/");
-    });
+    await Login(values)
+      .then((res) => {
+        if (res) {
+          setLoading(false);
+          router.push("/");
+        }
+      })
+      .catch((err) => setLoading(false));
   };
 
   const HandleSubmit = async (e) => {
@@ -74,6 +80,7 @@ export default function LoginForm() {
         value="Giriş"
         width="100%"
         height="45px"
+        disabled={loading}
       />
     </form>
   );

@@ -27,9 +27,7 @@ export const getProduct = async (productId) => {
     } else {
       return 404;
     }
-  } catch (err) {
-    console.log(err);
-  }
+  } catch (err) {}
 };
 
 export const getCategories = async () => {

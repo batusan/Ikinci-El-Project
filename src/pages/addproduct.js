@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-import AddProductComponent from "../components/AddProduct/AddProduct";
-import Navbar from "../components/Common/Navbar";
-import { useUserContext } from "../contexts/UserContext";
-import { getAuth } from "../services/AuthService";
+import AddProductComponent from "@/components/AddProduct/AddProduct";
+import Navbar from "@/components/Common/Navbar";
+import { useUserContext } from "@/contexts/UserContext";
+import { getAuth } from "@/services/AuthService";
 
 function AddProduct(props) {
   const { setUserDetail } = useUserContext();

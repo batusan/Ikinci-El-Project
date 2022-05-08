@@ -1,20 +1,21 @@
 import cls from "classnames";
-import styles from "../../styles/AddProduct.module.css";
+import styles from "@/styles/AddProduct.module.css";
 import { useFormik } from "formik";
 
 import AddDetail from "./AddDetail";
 import AddImage from "./AddImage";
-import { useProductContext } from "../../contexts/ProductContext";
-import { testRequest } from "../../services/TestService";
+import { useProductContext } from "@/contexts/ProductContext";
 import { useState, useEffect } from "react";
-import useHandleError from "../../hooks/useHandleErrors";
-import { ProductSchema } from "../../schemas/ProductSchema";
-import useNotify from "../../hooks/useNotify";
-import { useUserContext } from "../../contexts/UserContext";
+import useHandleError from "@/hooks/useHandleErrors";
+import { ProductSchema } from "@/schemas/ProductSchema";
+import useNotify from "@/hooks/useNotify";
+import { useUserContext } from "@/contexts/UserContext";
+import { useRouter } from "next/router";
 
 function AddProduct() {
+  const router = useRouter();
   const notify = useNotify;
-  const { createProduct } = useProductContext();
+  const { createProduct, setLoading } = useProductContext();
   const { userDetail } = useUserContext();
   const [userId, setUserId] = useState(0);
   const [image, setImage] = useState();
@@ -34,15 +35,33 @@ function AddProduct() {
     },
     validationSchema: ProductSchema,
     onSubmit: (values) => {
+      formik.resetForm();
+      setLoading(false);
       let formData = new FormData();
       formData.append("data", JSON.stringify(values));
       formData.append("files.image", image);
 
-      createProduct(formData).then((res) => {
-        notify("SUCCESS", "Ürün başarıyla eklendi");
-
-        console.log(res);
-      });
+      createProduct(formData)
+        .then((res) => {
+          if (res.status === 200) {
+            notify(
+              "SUCCESS",
+              "Ürün başarıyla eklendi. Ana sayfaya yönlendiriliyorsunuz."
+            );
+            setTimeout(function () {
+              setImage();
+              setLoading(false);
+              formik.resetForm();
+              router.push(`/`);
+            }, 500);
+          } else {
+            notify("ERROR", "Ürün eklenemedi");
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          setLoading(false);
+        });
     },
   });
 
@@ -53,8 +72,9 @@ function AddProduct() {
 
   function HandleSubmit(e) {
     e.preventDefault();
+    setLoading(true);
     const formEvent = ControlImage(image, e);
-    useHandleError(formEvent, formik);
+    useHandleError(formEvent, formik, setLoading);
   }
 
   const ControlImage = (image, formEvent) => {

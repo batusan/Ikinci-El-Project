@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import Banner from "../components/Common/Banner";
-import Categories from "../components/Common/Categories";
-import Navbar from "../components/Common/Navbar";
-import Products from "../components/Common/Products/Products";
-import { useUserContext } from "../contexts/UserContext";
-import { useProductContext } from "../contexts/ProductContext";
-import { getAuth } from "../services/AuthService";
-import { getIndexProps } from "../services/ProductService";
+import Banner from "@/components/Common/Banner";
+import Categories from "@/components/Common/Categories";
+import Navbar from "@/components/Common/Navbar";
+import Products from "@/components/Common/Products/Products";
+import { useUserContext } from "@/contexts/UserContext";
+import { useProductContext } from "@/contexts/ProductContext";
+import { getAuth } from "@/services/AuthService";
+import { getIndexProps } from "@/services/ProductService";
 
 export default function Home(props) {
   const [filter, setFilter] = useState();

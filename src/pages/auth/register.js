@@ -1,12 +1,12 @@
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import Logo from "../../assets/Icons/Logo";
-import ImagePanel from "../../components/Auth/ImagePanel";
-import RegisterForm from "../../components/Auth/RegisterForm";
-import { useUserContext } from "../../contexts/UserContext";
-import { getAuth } from "../../services/AuthService";
+import Logo from "@/assets/Icons/Logo";
+import ImagePanel from "@/components/Auth/ImagePanel";
+import RegisterForm from "@/components/Auth/RegisterForm";
+import { useUserContext } from "@/contexts/UserContext";
+import { getAuth } from "@/services/AuthService";
 
-import styles from "../../styles/Sign.module.css";
+import styles from "@/styles/Sign.module.css";
 
 export default function Register(props) {
   const { setUserDetail } = useUserContext();

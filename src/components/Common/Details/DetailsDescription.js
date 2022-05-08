@@ -1,4 +1,4 @@
-import commonStyles from "../../../styles/Common.module.css";
+import commonStyles from "@/styles/Common.module.css";
 
 function DetailsDescription(props) {
   return (

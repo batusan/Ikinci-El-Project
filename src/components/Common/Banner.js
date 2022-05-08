@@ -1,8 +1,8 @@
 import cls from "classnames";
 import Image from "next/image";
-import bannerImage from "../../assets/images/banner.png";
+import bannerImage from "@/assets/images/banner.png";
 
-import commonStyles from "../../styles/Common.module.css";
+import commonStyles from "@/styles/Common.module.css";
 
 function Banner() {
   return (

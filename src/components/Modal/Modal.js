@@ -1,8 +1,11 @@
-import styles from "../../styles/Modal.module.css";
-import commonStyles from "../../styles/Common.module.css";
+import styles from "@/styles/Modal.module.css";
+import commonStyles from "@/styles/Common.module.css";
 import Button from "../Inputs/Button";
+import { useProductContext } from "@/contexts/ProductContext";
 
 function Modal(props) {
+  const { loading } = useProductContext();
+
   if (!props.show) {
     return null;
   }
@@ -30,6 +33,7 @@ function Modal(props) {
             value="Satın Al"
             className={commonStyles.primaryButton}
             onClick={props.onClick}
+            disabled={loading}
           />
         </div>
       </div>

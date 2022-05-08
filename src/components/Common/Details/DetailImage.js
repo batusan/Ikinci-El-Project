@@ -1,7 +1,7 @@
 import Image from "next/image";
-import commonStyles from "../../../styles/Common.module.css";
-import { baseURL } from "../../../constants/axios";
-import NoImage from "../../../assets/images/noimage.jpg";
+import commonStyles from "@/styles/Common.module.css";
+import { baseURL } from "@/constants/axios";
+import NoImage from "@/assets/images/noimage.jpg";
 
 function DetailImage(props) {
   return (

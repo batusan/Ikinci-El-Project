@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import Arrow from "../../assets/Icons/Arrow";
-import styles from "../../styles/input.module.css";
+import Arrow from "@/assets/Icons/Arrow";
+import styles from "@/styles/input.module.css";
 
 function CustomSelect(props) {
   const changeValue = props.onChange;

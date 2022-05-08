@@ -1,8 +1,8 @@
 import Image from "next/image";
-import commonStyles from "../../../styles/Common.module.css";
-import { baseURL } from "../../../constants/axios";
+import commonStyles from "@/styles/Common.module.css";
+import { baseURL } from "@/constants/axios";
 import { useRouter } from "next/router";
-import NoImage from "../../../assets/images/noimage.jpg";
+import NoImage from "@/assets/images/noimage.jpg";
 
 function ProductCard(props) {
   const router = useRouter();

@@ -1,0 +1,18 @@
+// tsconfig.json or jsconfig.json
+{
+    "compilerOptions": {
+      "baseUrl": "./src/",
+      "paths": {
+        "@/components/*": ["components/*"],
+        "@/styles/*": ["styles/*"],
+        "@/constants/*": ["constants/*"],
+        "@/contexts/*": ["contexts/*"],
+        "@/hooks/*": ["hooks/*"],
+        "@/services/*": ["services/*"],
+        "@/schemas/*": ["schemas/*"],
+        "@/utils/*": ["utils/*"],
+        "@/assets/*": ["assets/*"],
+        "@/pages/*": ["pages/*"],
+      }
+    }
+  }

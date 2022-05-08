@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import styles from "../../styles/input.module.css";
+import styles from "@/styles/input.module.css";
 function RoundedCheckbox(props) {
   const change = props.onChange;
   const handleChange = () => {

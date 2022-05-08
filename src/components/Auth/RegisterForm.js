@@ -1,19 +1,22 @@
 import cls from "classnames";
 import { useFormik } from "formik";
 import { useRouter } from "next/router";
-import { RegisterSchema } from "../../schemas/RegisterSchema";
+import { RegisterSchema } from "@/schemas/RegisterSchema";
 
-import utilStyles from "../../styles/utilities.module.css";
-import signStyles from "../../styles/Sign.module.css";
+import utilStyles from "@/styles/utilities.module.css";
+import signStyles from "@/styles/Sign.module.css";
 
 import Input from "../Inputs/Input";
 import Label from "../Inputs/Label";
 import Button from "../Inputs/Button";
 
-import { Register } from "../../services/AuthService";
-import useHandleError from "../../hooks/useHandleErrors";
+import { Register } from "@/services/AuthService";
+import useHandleError from "@/hooks/useHandleErrors";
+import { useUserContext } from "@/contexts/UserContext";
 
 export default function RegisterForm() {
+  const { loading, setLoading } = useUserContext();
+
   const router = useRouter();
   const formik = useFormik({
     initialValues: {
@@ -22,15 +25,23 @@ export default function RegisterForm() {
     },
     validationSchema: RegisterSchema,
     onSubmit: (values) => {
+      setLoading(true);
       values = { ...values, username: values.email };
       handleAsyncSubmit(values);
     },
   });
 
   const handleAsyncSubmit = async (values) => {
-    await Register(values).then((res) => {
-      if (res) router.push("/");
-    });
+    await Register(values)
+      .then((res) => {
+        if (res) {
+          setLoading(false);
+          router.push("/");
+        }
+      })
+      .catch((error) => {
+        setLoading(false);
+      });
   };
 
   const HandleSubmit = async (e) => {
@@ -80,6 +91,7 @@ export default function RegisterForm() {
         value="Üye ol"
         width="100%"
         height="45px"
+        disabled={loading}
       />
     </form>
   );

@@ -1,11 +1,12 @@
 import cookie from "js-cookie";
 
 import { createContext, useContext, useState } from "react";
-import axios, { URL, requestAll } from "../constants/axios";
+import axios, { URL, requestAll } from "@/constants/axios";
 
 const ProductContext = createContext();
 
 export function ProductProvider({ children }) {
+  const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState();
   const [offers, setOffers] = useState([]);
@@ -155,12 +156,14 @@ export function ProductProvider({ children }) {
   return (
     <ProductContext.Provider
       value={{
+        loading,
         offers,
         products,
         categories,
         scrollCount,
         addMoreProducts,
         setScrollCount,
+        setLoading,
         setOffers,
         setProducts,
         setCategories,

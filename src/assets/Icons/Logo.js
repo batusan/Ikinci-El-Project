@@ -1,12 +1,14 @@
 function Logo(props) {
   return (
     <svg
+      id={props.id || ""}
       xmlns="http://www.w3.org/2000/svg"
       width={props.width || 0}
       height={props.height || 0}
       viewBox="0 0 224.489 73.195"
       className={props.class}
       onClick={props.onClick}
+      role="logo"
     >
       <g
         id="Group_6607"

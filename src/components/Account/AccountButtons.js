@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useProductContext } from "../../contexts/ProductContext";
-import styles from "../../styles/Account.module.css";
+import { useProductContext } from "@/contexts/ProductContext";
+import styles from "@/styles/Account.module.css";
 import Button from "../Inputs/Button";
 import Modal from "../Modal/Modal";
 import Router from "next/router";
@@ -13,7 +13,7 @@ function AccountButtons(props) {
     await acceptOffer(props.offer.id, {
       isStatus: true,
     }).then((res) => {
-      console.log(res);
+      Router.reload(window.location.pathname);
     });
   };
 
@@ -21,7 +21,7 @@ function AccountButtons(props) {
     await declineOffer(props.offer.id, {
       isStatus: false,
     }).then((res) => {
-      console.log(res);
+      Router.reload(window.location.pathname);
     });
   };
 

@@ -13,9 +13,13 @@ function AccountOffers(props) {
   return (
     <div>
       {props.type === "PRODUCT" ? (
-        <AccountMyProducts type={props.type} products={products} />
+        <>
+          {products && (
+            <AccountMyProducts type={props.type} products={products} />
+          )}
+        </>
       ) : (
-        <AccountMyOffer type={props.type} offers={offers} />
+        <>{offers && <AccountMyOffer type={props.type} offers={offers} />}</>
       )}
     </div>
   );

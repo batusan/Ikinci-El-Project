@@ -1,7 +1,7 @@
 import cls from "classnames";
 import { useState, useEffect } from "react";
-import { useProductContext } from "../../../contexts/ProductContext";
-import commonStyles from "../../../styles/Common.module.css";
+import { useProductContext } from "@/contexts/ProductContext";
+import commonStyles from "@/styles/Common.module.css";
 import ProductCard from "./ProductCard";
 
 function Products(props) {

@@ -1,7 +1,7 @@
 import toast from "react-hot-toast";
 
-import ErrorIcon from "../assets/Icons/ErrorIcon";
-import SuccessIcon from "../assets/Icons/SuccessIcon";
+import ErrorIcon from "@/assets/Icons/ErrorIcon";
+import SuccessIcon from "@/assets/Icons/SuccessIcon";
 
 const useNotify = (type, notifyMessage) => {
   switch (type) {

@@ -1,12 +1,11 @@
 import { useRouter } from "next/router";
-import ImagePanel from "../../components/Auth/ImagePanel";
-import LoginForm from "../../components/Auth/LoginForm";
-import Logo from "../../assets/Icons/Logo";
-import styles from "../../styles/Sign.module.css";
-
-import { getAuth } from "../../services/AuthService";
-import { useUserContext } from "../../contexts/UserContext";
 import { useEffect } from "react";
+import { getAuth } from "@/services/AuthService";
+import { useUserContext } from "@/contexts/UserContext";
+import ImagePanel from "@/components/Auth/ImagePanel";
+import LoginForm from "@/components/Auth/LoginForm";
+import Logo from "@/assets/Icons/Logo";
+import styles from "@/styles/Sign.module.css";
 
 export default function Login(props) {
   const { setUserDetail } = useUserContext();

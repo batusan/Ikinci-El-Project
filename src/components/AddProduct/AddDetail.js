@@ -1,4 +1,4 @@
-import styles from "../../styles/AddProduct.module.css";
+import styles from "@/styles/AddProduct.module.css";
 import AddProductForm from "./AddProductForm";
 
 function AddDetail(props) {

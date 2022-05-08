@@ -1,5 +1,5 @@
 import cls from "classnames";
-import commonStyles from "../../../styles/Common.module.css";
+import commonStyles from "@/styles/Common.module.css";
 import DetailSpecs from "./DetailSpecs";
 import DetailName from "./DetailName";
 import DetailImage from "./DetailImage";
@@ -7,11 +7,11 @@ import OfferModal from "../../Modal/OfferModal";
 import DetailButtons from "./DetailButtons";
 import DetailsDescription from "./DetailsDescription";
 import { useEffect, useState } from "react";
-import { useUserContext } from "../../../contexts/UserContext";
+import { useUserContext } from "@/contexts/UserContext";
 import DetailOffer from "./DetailOffer";
 import Modal from "../../Modal/Modal";
 import Router from "next/router";
-import { useProductContext } from "../../../contexts/ProductContext";
+import { useProductContext } from "@/contexts/ProductContext";
 
 function Details(props) {
   const { userDetail } = useUserContext();
@@ -50,10 +50,10 @@ function Details(props) {
             {props.product.price} TL
             <DetailOffer myOffer={myOffer} />
           </div>
-
           <DetailButtons
             myOffer={myOffer}
             setShow={setShow}
+            setMyOffer={setMyOffer}
             setOfferShow={setOfferShow}
             product={props.product}
           />

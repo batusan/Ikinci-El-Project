@@ -225,13 +225,38 @@
   height: 18px;
   line-height: 18px;
   width: 18px;
-  font-size: .7em;
+  font-size: 0.7em;
   font-weight: bold;
   border-radius: 50%;
   background-color: #525252;
   color: white;
   text-align: center;
   cursor: pointer;
+}
+
+.loader {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+}
+.loader:after {
+  content: " ";
+  display: block;
+  width: 30px;
+  height: 30px;
+  margin: 2px;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: loader 1.2s linear infinite;
+}
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @media screen and (max-width: 1024px) {

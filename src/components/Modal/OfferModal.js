@@ -1,34 +1,41 @@
 import Router from "next/router";
 import Image from "next/image";
-import { baseURL } from "../../constants/axios";
-import CloseIcon from "../../assets/Icons/CloseIcon";
-import styles from "../../styles/Modal.module.css";
+import { baseURL } from "@/constants/axios";
+import CloseIcon from "@/assets/Icons/CloseIcon";
+import styles from "@/styles/Modal.module.css";
 import Button from "../Inputs/Button";
-import commonStyles from "../../styles/Common.module.css";
+import commonStyles from "@/styles/Common.module.css";
 
 import OfferSelection from "./OfferSelection";
 import OfferInput from "../Inputs/OfferInput";
-import { useProductContext } from "../../contexts/ProductContext";
-import useNotify from "../../hooks/useNotify";
-import NoImage from "../../assets/images/noimage.jpg";
-import { useUserContext } from "../../contexts/UserContext";
+import { useProductContext } from "@/contexts/ProductContext";
+import useNotify from "@/hooks/useNotify";
+import NoImage from "@/assets/images/noimage.jpg";
+import { useUserContext } from "@/contexts/UserContext";
 
 const OfferModal = (props) => {
   const notify = useNotify;
-  const { setOffer } = useProductContext();
+  const { setOffer, loading, setLoading } = useProductContext();
   const { userDetail } = useUserContext();
   const handleSubmit = async () => {
     if (userDetail.id) {
       if (props.offerPrice > 0) {
+        setLoading(true);
         await setOffer({
           product: props.product.id,
           users_permissions_user: userDetail.id,
           offerPrice: props.offerPrice,
-        }).then((res) => {
-          notify("SUCCESS", "Teklif başarıyla verildi.");
-          props.setShow(false);
-          Router.reload(window.location.pathname);
-        });
+        })
+          .then((res) => {
+            notify("SUCCESS", "Teklif başarıyla verildi.");
+            setLoading(false);
+            props.setShow(false);
+            Router.reload(window.location.pathname);
+          })
+          .catch((err) => {
+            setLoading(false);
+            console.log(err);
+          });
       } else {
         notify("ERROR", "Yaptığınız teklif hatalı. Tekrar deneyin");
       }
@@ -102,6 +109,7 @@ const OfferModal = (props) => {
             value="Onayla"
             className={commonStyles.primaryButton}
             onClick={handleSubmit}
+            disabled={loading}
           />
         </div>
       </div>

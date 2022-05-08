@@ -1,5 +1,5 @@
 import AccountButtons from "./AccountButtons";
-import styles from "../../styles/Account.module.css";
+import styles from "@/styles/Account.module.css";
 
 function AccountOfferStatus(props) {
   if (props.type === "OFFERS") {
