@@ -8,7 +8,7 @@ function Logo(props) {
       viewBox="0 0 224.489 73.195"
       className={props.class}
       onClick={props.onClick}
-      role="logo"
+      role="img"
     >
       <g
         id="Group_6607"

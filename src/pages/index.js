@@ -33,13 +33,12 @@ export default function Home(props) {
 }
 
 export async function getServerSideProps(context) {
-  const response = await getIndexProps();
-  const isAuth = await getAuth(context.req.headers?.cookie);
+  const response = await getIndexProps(context.req.headers?.cookie);
   return {
     props: {
       categories: response.categories,
       products: response.products,
-      isAuth: isAuth,
+      isAuth: response.auth,
     },
   };
 }

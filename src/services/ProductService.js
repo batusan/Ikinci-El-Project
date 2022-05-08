@@ -2,7 +2,11 @@ import axios, { URL, requestAll } from "../constants/axios";
 import { parseCookie } from "../utils/cookieParser";
 
 export const pageConfig = {
-  index: [axios.get(URL.products + `?_limit=15`), axios.get(URL.categories)],
+  index: [
+    axios.get(URL.products + `?_limit=15`),
+    axios.get(URL.categories),
+    axios.get,
+  ],
 };
 
 export const getProducts = async (categoryId, limit = 1000) => {
@@ -54,11 +58,24 @@ export const getColors = async () => {
   }
 };
 
-export const getIndexProps = async () => {
+export const getIndexProps = async (cookie) => {
   try {
-    const response = await requestAll(pageConfig.index);
-    if (response) {
-      return { products: response[0].data, categories: response[1].data };
+    if (cookie) {
+      const token = parseCookie(cookie);
+      const response = await requestAll([
+        axios.get(URL.products + `?_limit=15`),
+        axios.get(URL.categories),
+        axios.get(URL.isAuth, {
+          headers: { Authorization: `Bearer ${token.Auth_Token}` },
+        }),
+      ]);
+      if (response) {
+        return {
+          products: response[0].data,
+          categories: response[1].data,
+          auth: response[2].data,
+        };
+      }
     }
   } catch (error) {
     console.log(error);
