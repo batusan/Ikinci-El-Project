@@ -8,13 +8,18 @@ A SecondHand Project written in Nextjs
 
 ## Contents
 
+- [About](#about)
 - [Features](#features)
 - [Technologies](#technologies)
-- [Tests](#test)
 - [Installation](#installation)
 - [Structure](#structure)
 - [Screenshots](#screenshots)
 - [Issues](#issues)
+
+## About
+
+A SecondHand Project , A platform where users can easily sell second-hand products to each other. They can make offers to get great products cheap.
+
 
 ## Features
 
@@ -66,6 +71,7 @@ npm start
 Open http://localhost:3000 with your browser to see the result.
 
 ## Structure
+
     `/src/`  ->
         `@assets`  -> images and imported files.
 
