@@ -8,9 +8,10 @@ import { useProductContext } from "@/contexts/ProductContext";
 import { getAuth } from "@/services/AuthService";
 import { getIndexProps } from "@/services/ProductService";
 
-import dynamic from "next/dynamic"
-const ProductDynamic = dynamic(() => import("@/components/Common/Products/Products"));
-
+import dynamic from "next/dynamic";
+const ProductDynamic = dynamic(() =>
+  import("@/components/Common/Products/Products")
+);
 
 export default function Home(props) {
   const [filter, setFilter] = useState();
@@ -37,6 +38,10 @@ export default function Home(props) {
 }
 
 export async function getServerSideProps(context) {
+  res.setHeader(
+    "Cache-Control",
+    "public, s-maxage=10, stale-while-revalidate=59"
+  );
   const response = await getIndexProps();
   const isAuth = await getAuth(context.req.headers?.cookie);
   return {
