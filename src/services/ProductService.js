@@ -50,16 +50,16 @@ export const getColors = async () => {
   }
 };
 
-export const getIndexProps = async (cookie) => {
+export const getIndexProps = async () => {
   try {
     const response = await requestAll([
       axios.get(URL.products + `?_limit=15`),
-
+      axios.get(URL.categories),
     ]);
     if (response) {
       return {
         products: response[0].data,
-
+        categories: response[1].data,
       };
     }
   } catch (error) {

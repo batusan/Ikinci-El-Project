@@ -7,7 +7,7 @@ const ProductContext = createContext();
 
 export function ProductProvider({ children }) {
   const [loading, setLoading] = useState(false);
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState();
   const [products, setProducts] = useState();
   const [offers, setOffers] = useState([]);
   const [scrollCount, setScrollCount] = useState(0);
@@ -30,6 +30,19 @@ export function ProductProvider({ children }) {
       const response = await axios.get(URL.brands);
       if (response.status === 200) {
         return response.data;
+      } else {
+        return 404;
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getCategoriesToClient = async () => {
+    try {
+      const response = await axios.get(URL.categories);
+      if (response.status === 200) {
+        setCategories(response.data);
       } else {
         return 404;
       }
@@ -167,6 +180,7 @@ export function ProductProvider({ children }) {
         setOffers,
         setProducts,
         setCategories,
+        getCategoriesToClient,
         getColors,
         getBrands,
         getAddProductReq,

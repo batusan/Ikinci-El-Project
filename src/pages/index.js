@@ -8,6 +8,10 @@ import { useProductContext } from "@/contexts/ProductContext";
 import { getAuth } from "@/services/AuthService";
 import { getIndexProps } from "@/services/ProductService";
 
+import dynamic from "next/dynamic"
+const ProductDynamic = dynamic(() => import("@/components/Common/Products/Products"));
+
+
 export default function Home(props) {
   const [filter, setFilter] = useState();
   const { setUserDetail } = useUserContext();
@@ -27,7 +31,7 @@ export default function Home(props) {
       <Navbar isAuth={props.isAuth} />
       <Banner />
       <Categories categories={categories} setFilter={setFilter} />
-      <Products products={products} filter={filter} />
+      <ProductDynamic products={products} filter={filter} />
     </div>
   );
 }
@@ -37,6 +41,7 @@ export async function getServerSideProps(context) {
   const isAuth = await getAuth(context.req.headers?.cookie);
   return {
     props: {
+      categories: response.categories,
       products: response.products,
       isAuth: isAuth,
     },
