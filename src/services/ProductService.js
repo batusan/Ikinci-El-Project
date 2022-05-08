@@ -1,10 +1,6 @@
 import axios, { URL, requestAll } from "../constants/axios";
 import { parseCookie } from "../utils/cookieParser";
 
-export const pageConfig = {
-  index: [axios.get(URL.products + `?_limit=15`), axios.get(URL.categories)],
-};
-
 export const getProducts = async (categoryId, limit = 1000) => {
   try {
     const query = categoryId ? `${URL.categories}/${categoryId}` : URL.products;
@@ -56,38 +52,16 @@ export const getColors = async () => {
 
 export const getIndexProps = async (cookie) => {
   try {
-    var requestArray = [];
-    if (cookie) {
-      const token = parseCookie(cookie);
-      requestArray = [
-        axios.get(URL.products + `?_limit=15`),
-        axios.get(URL.categories),
-        axios.get(URL.isAuth, {
-          headers: { Authorization: `Bearer ${token.Auth_Token}` },
-        }),
-      ];
-      const response = await requestAll(requestArray);
-      if (response) {
-        return {
-          products: response[0].data,
-          categories: response[1].data,
-          auth: response[2].data,
-        };
-      }
-    } else {
-      requestArray = [
-        axios.get(URL.products + `?_limit=15`),
-        axios.get(URL.categories),
-      ];
-      const response = await requestAll(requestArray);
-      if (response) {
-        return {
-          products: response[0].data,
-          categories: response[1].data,
-        };
-      }
+    const response = await requestAll([
+      axios.get(URL.products + `?_limit=15`),
+      axios.get(URL.categories),
+    ]);
+    if (response) {
+      return {
+        products: response[0].data,
+        categories: response[1].data,
+      };
     }
-    console.log(requestArray);
   } catch (error) {
     console.log(error);
   }
