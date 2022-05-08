@@ -6,10 +6,36 @@ import ProductCard from "./ProductCard";
 
 function Products(props) {
   const [products, setProducts] = useState([]);
-  const [startProduct, setStartProduct] = useState(0);
-  const { addMoreProducts } = useProductContext();
+  const { addMoreProducts, scrollCount, setScrollCount } = useProductContext();
+  const [initRender, setInitRender] = useState(true);
+
+  /**
+   * Prevent execute function from init render
+   * If my function gonna exec on pre-render , Its gonna add previous added products and
+   * duplicate all of previous 15 product.
+   *
+   * initRender gonna set false on init ---> product loader on scroll not gonna break.
+   */
+  useEffect(() => {
+    async function updateStartProduct() {
+      await addMoreProducts(scrollCount);
+    }
+    if (initRender) setInitRender(false);
+    if (!initRender) {
+      if (scrollCount > 0) updateStartProduct();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [scrollCount]);
 
   useEffect(() => {
+    const filterCategory = (products) => {
+      if (products) {
+        var filteredProducts = products.filter(
+          (product) => product.category?.id === props.filter
+        );
+        return filteredProducts;
+      }
+    };
     if (props.filter) {
       if (props.products) setProducts(filterCategory(props.products));
     } else {
@@ -17,28 +43,12 @@ function Products(props) {
     }
   }, [props.products, props.filter]);
 
-  useEffect(() => {
-    async function updateStartProduct() {
-      await addMoreProducts(startProduct);
-    }
-    if (startProduct > 0) updateStartProduct();
-  }, [startProduct]);
-
-  const filterCategory = (products) => {
-    if (products) {
-      var filteredProducts = products.filter(
-        (product) => product.category?.id === props.filter
-      );
-      return filteredProducts;
-    }
-  };
-
   const onBottom = async () => {
     if (
       window.innerHeight + window.pageYOffset >=
       document.body.scrollHeight - 10
     ) {
-      setStartProduct((prevState) => {
+      setScrollCount((prevState) => {
         return prevState + 15;
       });
     }

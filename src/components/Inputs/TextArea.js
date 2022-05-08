@@ -10,6 +10,7 @@ function TextArea(props) {
       placeholder={props.placeholder}
       onChange={props.onChange || undefined}
       value={props.value || undefined}
+      maxLength={props.maxLength || undefined}
     ></textarea>
   );
 }

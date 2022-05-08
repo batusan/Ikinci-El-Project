@@ -1,11 +1,11 @@
 import { Toaster } from "react-hot-toast";
-import { AuthProvider } from "../contexts/AuthContext";
+import { UserProvider } from "../contexts/UserContext";
 import { ProductProvider } from "../contexts/ProductContext";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <AuthProvider>
+    <UserProvider>
       <ProductProvider>
         <Toaster
           position="top-right"
@@ -51,7 +51,7 @@ function MyApp({ Component, pageProps }) {
         />
         <Component {...pageProps} />
       </ProductProvider>
-    </AuthProvider>
+    </UserProvider>
   );
 }
 

@@ -5,14 +5,14 @@ import Logo from "../../assets/Icons/Logo";
 import styles from "../../styles/Sign.module.css";
 
 import { getAuth } from "../../services/AuthService";
-import { useAuthContext } from "../../contexts/AuthContext";
+import { useUserContext } from "../../contexts/UserContext";
 import { useEffect } from "react";
 
 export default function Login(props) {
-  const { setUserDetail } = useAuthContext();
+  const { setUserDetail } = useUserContext();
   useEffect(() => {
     setUserDetail(props.isAuth);
-  }, []);
+  });
 
   const router = useRouter();
 

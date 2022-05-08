@@ -3,8 +3,12 @@ import UploadIcon from "../../assets/Icons/UploadIcon";
 import { FileDrop } from "react-file-drop";
 import Image from "next/image";
 import { useEffect, useState, useRef } from "react";
+import useNotify from "../../hooks/useNotify";
+
+const validFileTypes = ["image/jpeg", "image/jpg", "image/png"];
 
 function DrapDropFileUploader(props) {
+  const notify = useNotify;
   const [file, setFile] = useState();
 
   const changeValue = props.onChange;
@@ -12,8 +16,8 @@ function DrapDropFileUploader(props) {
 
   const onFileInputChange = (event) => {
     const { files } = event.target;
-    console.log(files);
-    setFile(files[0]);
+    const file = fileCheck(files[0]);
+    setFile(file);
   };
 
   const onTargetClick = () => {
@@ -27,7 +31,27 @@ function DrapDropFileUploader(props) {
   }, [file]);
 
   const handleDrop = (files, event) => {
-    setFile(files[0]);
+    event.preventDefault();
+    const file = fileCheck(files[0]);
+    setFile(file);
+  };
+
+  const fileCheck = (file) => {
+    if (file) {
+      if (file.size > 400 * 1000) {
+        notify("ERROR", "Dosya boyutu 400kb üzerinde yükleyemezsiniz.");
+        return;
+      }
+      if (!fileTypeValid(file, validFileTypes)) {
+        notify("ERROR", "Uzantı olarak png /jpg / jpeg kullanmalısınız.");
+        return;
+      }
+      return file;
+    }
+  };
+
+  const fileTypeValid = (file, fileTypes) => {
+    return fileTypes.some((fileType) => fileType === file.type);
   };
 
   const previewImage = () => {

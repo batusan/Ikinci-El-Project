@@ -7,14 +7,14 @@ import OfferModal from "../../Modal/OfferModal";
 import DetailButtons from "./DetailButtons";
 import DetailsDescription from "./DetailsDescription";
 import { useEffect, useState } from "react";
-import { useAuthContext } from "../../../contexts/AuthContext";
+import { useUserContext } from "../../../contexts/UserContext";
 import DetailOffer from "./DetailOffer";
 import Modal from "../../Modal/Modal";
 import Router from "next/router";
 import { useProductContext } from "../../../contexts/ProductContext";
 
 function Details(props) {
-  const { userDetail } = useAuthContext();
+  const { userDetail } = useUserContext();
   const { buyProduct } = useProductContext();
   const [offerShow, setOfferShow] = useState(false);
   const [show, setShow] = useState(false);
@@ -30,15 +30,14 @@ function Details(props) {
   };
 
   useEffect(() => {
+    const didIOffer = () => {
+      const data = props.product.offers.find(
+        (offer) => offer.users_permissions_user === userDetail.id
+      );
+      if (data) setMyOffer(data);
+    };
     if (userDetail) didIOffer();
-  }, [userDetail]);
-
-  const didIOffer = () => {
-    const data = props.product.offers.find(
-      (offer) => offer.users_permissions_user === userDetail.id
-    );
-    if (data) setMyOffer(data);
-  };
+  }, [userDetail, props.product.offers]);
 
   return (
     <>

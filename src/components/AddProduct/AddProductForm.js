@@ -19,18 +19,18 @@ function AddProductForm(props) {
   const [usingStatus, setUsingStatus] = useState([]);
   const [categories, setCategories] = useState([]);
 
-  useEffect(() => {
-    fetchData().catch(console.error);
-  }, []);
-
   const fetchData = useCallback(async () => {
     //const data = await getColors().then((res) => setColors(res));
     await getAddProductReq().then((result) => {
-      setColors(result[1].data);
       setBrands(result[0].data);
+      setColors(result[1].data);
       setUsingStatus(result[2].data);
       setCategories(result[3].data);
     });
+  }, [getAddProductReq]);
+
+  useEffect(() => {
+    fetchData().catch(console.error);
   }, []);
 
   return (
@@ -42,6 +42,7 @@ function AddProductForm(props) {
           width="100%"
           type="text"
           name="name"
+          maxLength={100}
           onChange={formik.handleChange}
           value={formik.values.name}
           placeholder="Örnek: Iphone 12 Pro Max"
@@ -53,6 +54,7 @@ function AddProductForm(props) {
           name="description"
           cols="40"
           rows="5"
+          maxLength={500}
           onChange={formik.handleChange}
           value={formik.values.description}
         />

@@ -10,11 +10,14 @@ function Input(props) {
       id={props.id}
       name={props.name || undefined}
       className={
-        props.onError ? cls(styles.textInput, styles.errorInput) : styles.textInput
+        props.onError
+          ? cls(styles.textInput, styles.errorInput)
+          : styles.textInput
       }
-      onChange={props.onChange || ''}
-      value={props.value || ''}
+      onChange={props.onChange || ""}
+      value={props.value || ""}
       placeholder={props.placeholder || undefined}
+      maxLength={props.maxLength || undefined}
     />
   );
 }

@@ -6,12 +6,10 @@ import axios, { URL, requestAll } from "../constants/axios";
 const ProductContext = createContext();
 
 export function ProductProvider({ children }) {
-  const [colors, setColors] = useState([]);
-  const [brands, setBrands] = useState([]);
-  const [usingStatus, setUsingStatus] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState();
   const [offers, setOffers] = useState([]);
+  const [scrollCount, setScrollCount] = useState(0);
 
   const getColors = async () => {
     try {
@@ -160,7 +158,9 @@ export function ProductProvider({ children }) {
         offers,
         products,
         categories,
+        scrollCount,
         addMoreProducts,
+        setScrollCount,
         setOffers,
         setProducts,
         setCategories,

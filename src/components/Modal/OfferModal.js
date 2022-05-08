@@ -11,12 +11,12 @@ import OfferInput from "../Inputs/OfferInput";
 import { useProductContext } from "../../contexts/ProductContext";
 import useNotify from "../../hooks/useNotify";
 import NoImage from "../../assets/images/noimage.jpg";
-import { useAuthContext } from "../../contexts/AuthContext";
+import { useUserContext } from "../../contexts/UserContext";
 
 const OfferModal = (props) => {
   const notify = useNotify;
   const { setOffer } = useProductContext();
-  const { userDetail } = useAuthContext();
+  const { userDetail } = useUserContext();
   const handleSubmit = async () => {
     if (userDetail.id) {
       if (props.offerPrice > 0) {

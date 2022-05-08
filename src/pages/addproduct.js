@@ -1,14 +1,14 @@
 import { useEffect } from "react";
 import AddProductComponent from "../components/AddProduct/AddProduct";
 import Navbar from "../components/Common/Navbar";
-import { useAuthContext } from "../contexts/AuthContext";
+import { useUserContext } from "../contexts/UserContext";
 import { getAuth } from "../services/AuthService";
 
 function AddProduct(props) {
-  const { setUserDetail } = useAuthContext();
+  const { setUserDetail } = useUserContext();
   useEffect(() => {
     setUserDetail(props.isAuth);
-  }, []);
+  });
   return (
     <>
       <Navbar isAuth={props.isAuth} />

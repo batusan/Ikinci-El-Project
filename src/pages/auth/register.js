@@ -3,16 +3,16 @@ import { useEffect } from "react";
 import Logo from "../../assets/Icons/Logo";
 import ImagePanel from "../../components/Auth/ImagePanel";
 import RegisterForm from "../../components/Auth/RegisterForm";
-import { useAuthContext } from "../../contexts/AuthContext";
+import { useUserContext } from "../../contexts/UserContext";
 import { getAuth } from "../../services/AuthService";
 
 import styles from "../../styles/Sign.module.css";
 
 export default function Register(props) {
-  const { setUserDetail } = useAuthContext();
+  const { setUserDetail } = useUserContext();
   useEffect(() => {
     setUserDetail(props.isAuth);
-  }, []);
+  });
   const router = useRouter();
   const clickHandle = () => {
     router.push("/auth/login");

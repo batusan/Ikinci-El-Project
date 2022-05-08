@@ -3,22 +3,24 @@ import Banner from "../components/Common/Banner";
 import Categories from "../components/Common/Categories";
 import Navbar from "../components/Common/Navbar";
 import Products from "../components/Common/Products/Products";
-import { useAuthContext } from "../contexts/AuthContext";
+import { useUserContext } from "../contexts/UserContext";
 import { useProductContext } from "../contexts/ProductContext";
 import { getAuth } from "../services/AuthService";
 import { getIndexProps } from "../services/ProductService";
 
 export default function Home(props) {
   const [filter, setFilter] = useState();
-  const { setUserDetail } = useAuthContext();
-  const { products, categories, setCategories, setProducts } = useProductContext();
-    
+  const { setUserDetail } = useUserContext();
+  const { products, categories, setCategories, setProducts } =
+    useProductContext();
 
   useEffect(() => {
+    if (!products) {
+      setProducts(props.products);
+    }
     setUserDetail(props.isAuth);
-    setProducts(props.products);
     setCategories(props.categories);
-  }, []);
+  });
 
   return (
     <div>

@@ -10,19 +10,14 @@ import { useState, useEffect } from "react";
 import useHandleError from "../../hooks/useHandleErrors";
 import { ProductSchema } from "../../schemas/ProductSchema";
 import useNotify from "../../hooks/useNotify";
-import { useAuthContext } from "../../contexts/AuthContext";
+import { useUserContext } from "../../contexts/UserContext";
 
 function AddProduct() {
   const notify = useNotify;
   const { createProduct } = useProductContext();
-  const { userDetail } = useAuthContext();
+  const { userDetail } = useUserContext();
   const [userId, setUserId] = useState(0);
   const [image, setImage] = useState();
-
-  useEffect(() => {
-    if (userDetail)
-      formik.setFieldValue("users_permissions_user", userDetail.id);
-  }, [userDetail]);
 
   const formik = useFormik({
     initialValues: {
@@ -45,11 +40,16 @@ function AddProduct() {
 
       createProduct(formData).then((res) => {
         notify("SUCCESS", "Ürün başarıyla eklendi");
-        
+
         console.log(res);
       });
     },
   });
+
+  useEffect(() => {
+    if (userDetail)
+      formik.setFieldValue("users_permissions_user", userDetail.id);
+  }, [userDetail]);
 
   function HandleSubmit(e) {
     e.preventDefault();

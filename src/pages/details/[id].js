@@ -1,15 +1,15 @@
 import { useEffect } from "react";
 import DetailsComponent from "../../components/Common/Details";
 import Navbar from "../../components/Common/Navbar";
-import { useAuthContext } from "../../contexts/AuthContext";
+import { useUserContext } from "../../contexts/UserContext";
 import { getAuth } from "../../services/AuthService";
 import { getProduct } from "../../services/ProductService";
 
 export default function Details(props) {
-  const { setUserDetail } = useAuthContext();
+  const { setUserDetail } = useUserContext();
   useEffect(() => {
     setUserDetail(props.isAuth);
-  }, []);
+  });
   return (
     <div>
       <Navbar isAuth={props.isAuth} />
