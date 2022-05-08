@@ -7,6 +7,7 @@ import { getProduct } from "@/services/ProductService";
 import styles from "@/styles/Common.module.css";
 import cls from "classnames";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 export default function Details(props) {
   const router = useRouter();
@@ -27,6 +28,11 @@ export default function Details(props) {
 
   return (
     <div>
+      <Head>
+        <title>{props.product.name} | İkinci El Project</title>
+        <meta name="description" content="İkinci el alışveriş sitem." />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <Navbar isAuth={props.isAuth} />
       {props.product ? (
         <DetailsComponent product={props.product} />

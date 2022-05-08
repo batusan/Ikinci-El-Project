@@ -6,6 +6,7 @@ import ImagePanel from "@/components/Auth/ImagePanel";
 import LoginForm from "@/components/Auth/LoginForm";
 import Logo from "@/assets/Icons/Logo";
 import styles from "@/styles/Sign.module.css";
+import Head from "next/head";
 
 export default function Login(props) {
   const { setUserDetail } = useUserContext();
@@ -21,6 +22,11 @@ export default function Login(props) {
 
   return (
     <div className={styles.sign}>
+      <Head>
+        <title>Giriş Yap | İkinci El Project</title>
+        <meta name="description" content="İkinci el alışveriş sitem." />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <ImagePanel />
       <div className={styles.rightSide}>
         <Logo width="224.49px" height="73.2px" class={styles.logo} />

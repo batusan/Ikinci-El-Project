@@ -9,6 +9,7 @@ import { getAuth } from "@/services/AuthService";
 import { getIndexProps } from "@/services/ProductService";
 
 import dynamic from "next/dynamic";
+import Head from "next/head";
 const ProductDynamic = dynamic(() =>
   import("@/components/Common/Products/Products")
 );
@@ -29,6 +30,11 @@ export default function Home(props) {
 
   return (
     <div>
+      <Head>
+        <title>Anasayfa | İkinci El Project</title>
+        <meta name="description" content="İkinci el alışveriş sitem." />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <Navbar isAuth={props.isAuth} />
       <Banner />
       <Categories categories={categories} setFilter={setFilter} />

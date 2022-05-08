@@ -7,6 +7,7 @@ import { useUserContext } from "@/contexts/UserContext";
 import { getAuth } from "@/services/AuthService";
 
 import styles from "@/styles/Sign.module.css";
+import Head from "next/head";
 
 export default function Register(props) {
   const { setUserDetail } = useUserContext();
@@ -19,6 +20,11 @@ export default function Register(props) {
   };
   return (
     <div className={styles.sign}>
+      <Head>
+        <title>Kayıt Ol | İkinci El Project</title>
+        <meta name="description" content="İkinci el alışveriş sitem." />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <ImagePanel />
       <div className={styles.rightSide}>
         <Logo width="224.49px" height="73.2px" class={styles.logo} />
