@@ -1,34 +1,110 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# İkinci El Project (Secondhand Project)
 
-## Getting Started
+[<img src="./src/assets/images/logo.svg" align="right" width="250">](https://ikinci-el-batusan.vercel.app/)
 
-First, run the development server:
+Think an application where you can post secondhand items for sale and race with people for bids.
 
-```bash
+A SecondHand Project written in Nextjs
+
+## Contents
+
+- [Features](#features)
+- [Technologies](#technologies)
+- [Tests](#test)
+- [Installation](#installation)
+- [Structure](#structure)
+- [Screenshots](#screenshots)
+- [Issues](#issues)
+
+## Features
+
+- Register and login accounts. (validations)
+- Search the system for categorized items.
+- Add products.
+- Bid products.
+- Cancel bid.
+- Buy products.
+- Track product status.
+- Track your offers (bids).
+
+## Technologies
+
+##### Frontend
+
+- [Next.js](https://nextjs.org/ "Next.js")
+- Formik - Yup
+- [React-file-drop](https://www.npmjs.com/package/react-file-drop "React-file-drop") for image handling
+- [js-cookie](https://www.npmjs.com/package/js-cookie "js-cookie") for handle easily cookies
+- [Sharp](https://www.npmjs.com/package/sharp "Sharp") Image optimizer (Next.js suggestion)
+
+##### Testing
+
+- Jest
+- react-testing-library
+
+## Installation
+
+For development :
+
+```javascript
+// Firstly install dependecies
+npm install
+
+//After we can run project , run dev gonna start on dev mode
 npm run dev
-# or
-yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+For production:
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```javascript
+npm run build
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+//After we can run project , gonna start on production mode
+npm start
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Open http://localhost:3000 with your browser to see the result.
 
-## Learn More
+## Structure
+    `/src/`  ->
+        `@assets`  -> images and imported files.
 
-To learn more about Next.js, take a look at the following resources:
+        `@components`  -> a collection of UI components like buttons, modals, inputs, loader, etc.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+        `@contexts`  -> React contexts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+        `@hooks`  -> React Custom Hooks
 
-## Deploy on Vercel
+        `@pages`  -> route of the application
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+        `@services`  -> shared services for SSR requests
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+        `@styles`  -> modules styles and global.css
+
+## Screenshots
+
+<details>
+  <summary>Desktop View</summary>
+  
+  [![Main view](./readme-images/desktop-index.png "Main view")](./readme-images/desktop-index.png "Main view")
+
+[![detail view](./readme-images/desktop-detail.png "detail view")](./readme-images/desktop-detail.png "detail view")
+
+[![login view](./readme-images/desktop-login.png "login view")](./readme-images/desktop-login.png "login view")
+
+</details>
+
+<details>
+  <summary>Mobile View</summary>
+  
+  [![Main view](./readme-images/mobile-index.png "mobile view")](./readme-images/mobile-index.png "Main view")
+
+[![detail view](./readme-images/mobile-detail.png "mobile view")](./readme-images/mobile-detail.png "detail view")
+
+[![login view](./readme-images/mobile-login.png "mobile view")](./readme-images/mobile-login.png "mobile view")
+
+</details>
+
+## Issues
+
+- Images not displaying correctly on mid range resolutions
