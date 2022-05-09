@@ -142,6 +142,9 @@
 }
 
 @media (min-width: 1200px) {
+  .toggleWrapper{
+    justify-content: flex-start;
+  }
   .wrapper {
     flex-direction: row;
     height: 812px;
