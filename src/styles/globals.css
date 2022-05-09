@@ -1,21 +1,20 @@
-/* styles/global/globals.css */
+/* styles/globals.css */
 
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap");
 
 :root {
-  --main-color: #4b9ce2;
-  --bg-color: #f2f2f2;
-  --green: #3fe79e;
-  --dark: #0f0235;
-  --off-white: #f5f5f3;
-
-  --space-sm: 0.5rem;
-  --space-md: 1rem;
-  --space-lg: 1.5rem;
-
-  --font-size-sm: 0.5rem;
-  --font-size-md: 1rem;
-  --font-size-lg: 2rem;
+  /* Colors: */
+  --unnamed-color-ffe5e5: #ffe5e5;
+  --unnamed-color-46af32: #46af32;
+  --unnamed-color-4b9ce2: #4b9ce2;
+  --unnamed-color-f0f8ff: #f0f8ff;
+  --unnamed-color-f77474: #f77474;
+  --unnamed-color-3e3e3e: #3e3e3e;
+  --unnamed-color-525252: #525252;
+  --unnamed-color-b1b1b1: #b1b1b1;
+  --unnamed-color-eaeaea: #eaeaea;
+  --unnamed-color-f2f2f2: #f2f2f2;
+  --unnamed-color-ffffff: #ffffff;
 }
 
 html,
@@ -24,7 +23,7 @@ body {
   font-size: 16px;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background: #f2f2f2 0% 0% no-repeat padding-box;
+  background: var(--unnamed-color-f2f2f2) 0% 0% no-repeat padding-box;
   opacity: 1;
 }
 
@@ -114,7 +113,7 @@ a {
   width: 100%;
   height: 164px;
   background: #ffffff 0% 0% no-repeat padding-box;
-  border: 1px dashed #b1b1b1;
+  border: 1px dashed var(--unnamed-color-b1b1b1);
   border-radius: 10px;
   opacity: 1;
 }
@@ -130,14 +129,14 @@ a {
   text-align: center;
   font: normal normal 600 14px/15px Nunito;
   letter-spacing: 0px;
-  color: #525252;
+  color: var(--unnamed-color-525252);
 }
 
 .file-info {
   text-align: center;
   font: normal normal normal 12px/14px Nunito;
   letter-spacing: 0px;
-  color: #b1b1b1;
+  color: var(--unnamed-color-b1b1b1);
   opacity: 1;
 }
 
@@ -149,7 +148,7 @@ a {
   text-align: center;
   font: normal normal normal 15px/23px Nunito;
   letter-spacing: 0px;
-  color: #b1b1b1;
+  color: var(--unnamed-color-b1b1b1);
 }
 
 /* REMOVE ARROWS INSIDE NUMBER INPUT */

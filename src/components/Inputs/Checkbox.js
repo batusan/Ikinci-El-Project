@@ -2,6 +2,7 @@ function Checkbox(props) {
   return (
     <>
       <input
+        id={props.id}
         className={props.className}
         type="checkbox"
         name="isOfferable"

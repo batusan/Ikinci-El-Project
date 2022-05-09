@@ -58,6 +58,10 @@
   margin-bottom: 1.5vh;
 }
 
+.logo{
+  cursor: pointer;
+}
+
 .logi .signButton {
   margin-top: 3vh;
 }

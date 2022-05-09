@@ -11,8 +11,10 @@ import { useUserContext } from "@/contexts/UserContext";
 import Input from "../Inputs/Input";
 import Label from "../Inputs/Label";
 import Button from "../Inputs/Button";
+import useNotify from "@/hooks/useNotify";
 
 export default function LoginForm() {
+  const notify = useNotify;
   const { loading, setLoading } = useUserContext();
   const router = useRouter();
   const formik = useFormik({
@@ -32,6 +34,7 @@ export default function LoginForm() {
       .then((res) => {
         if (res) {
           setLoading(false);
+          notify("SUCCESS", "Başarıyla giriş yapıldı.");
           router.push("/");
         }
       })

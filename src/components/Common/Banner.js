@@ -10,6 +10,7 @@ function Banner() {
       <Image
         src={bannerImage}
         alt="Banner Image"
+        role={"img"}
         priority
         layout="responsive"
       />

@@ -32,6 +32,7 @@ function Navbar(props) {
                   commonStyles.secondaryButton,
                   commonStyles.miniButton
                 )}
+                ariaLabel={'Add Button'}
                 icon={<PlusIcon className={commonStyles.navbarIcon} />}
                 height="40px"
                 value="Ürün Ekle"

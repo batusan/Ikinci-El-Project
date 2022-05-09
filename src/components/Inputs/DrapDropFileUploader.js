@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import styles from "@/styles/input.module.css";
 import UploadIcon from "@/assets/Icons/UploadIcon";
 import { FileDrop } from "react-file-drop";

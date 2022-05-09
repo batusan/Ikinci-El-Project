@@ -2,7 +2,7 @@ import styles from "@/styles/input.module.css";
 
 function Label(props) {
   return (
-    <label htmlFor={props.for} className={styles.label}>
+    <label htmlFor={props.htmlFor} className={styles.label}>
       {props.value}
     </label>
   );

@@ -4,7 +4,7 @@ import cls from "classnames";
 function OfferInput(props) {
   return (
     <div className={styles.OfferInputWrapper}>
-      <label htmlFor="number">TL</label>
+      <label htmlFor="price">TL</label>
       <input
         style={{
           width: props.width || undefined,

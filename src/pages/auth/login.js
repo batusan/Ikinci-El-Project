@@ -20,6 +20,10 @@ export default function Login(props) {
     router.push("/auth/register");
   };
 
+  const clickLogo = () => {
+    router.push(`/`);
+  };
+
   return (
     <div className={styles.sign}>
       <Head>
@@ -29,7 +33,12 @@ export default function Login(props) {
       </Head>
       <ImagePanel />
       <div className={styles.rightSide}>
-        <Logo width="224.49px" height="73.2px" class={styles.logo} />
+        <Logo
+          width="224.49px"
+          height="73.2px"
+          class={styles.logo}
+          onClick={clickLogo}
+        />
         <div className={styles.registerFormWrapper}>
           <span className={styles.registerText}>Giriş Yap</span>
           <span className={styles.registerUnderText}>

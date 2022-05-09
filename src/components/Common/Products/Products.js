@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import cls from "classnames";
 import { useState, useEffect } from "react";
 import { useProductContext } from "@/contexts/ProductContext";

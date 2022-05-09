@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Input from "../Inputs/Input";
 import Label from "../Inputs/Label";
 import TextArea from "../Inputs/TextArea";
@@ -20,7 +21,6 @@ function AddProductForm(props) {
   const [categories, setCategories] = useState([]);
 
   const fetchData = useCallback(async () => {
-    //const data = await getColors().then((res) => setColors(res));
     await getAddProductReq().then((result) => {
       setBrands(result[0].data);
       setColors(result[1].data);
@@ -51,6 +51,7 @@ function AddProductForm(props) {
       <div className={styles.inputWrapper}>
         <Label htmlFor="description" value="Açıklama" />
         <TextArea
+          id={"description"}
           name="description"
           cols="40"
           rows="5"
@@ -111,6 +112,7 @@ function AddProductForm(props) {
         <div className={styles.OfferWrapper}>
           <Label htmlFor="price" value="Fiyat" />
           <OfferInput
+            id={"price"}
             name="price"
             height={"45px"}
             className={styles.OfferInput}
@@ -119,8 +121,9 @@ function AddProductForm(props) {
           />
         </div>
         <div className={styles.toggleWrapper}>
-          Teklif Opsiyonu{" "}
+          <label htmlFor={"isOfferable"}>Teklif Opsiyonu </label>
           <Checkbox
+            id={"isOfferable"}
             onChange={formik.handleChange}
             value={formik.values.isOfferable}
             className={styles.toggle}

@@ -10,14 +10,20 @@ import styles from "@/styles/Sign.module.css";
 import Head from "next/head";
 
 export default function Register(props) {
+  const router = useRouter();
   const { setUserDetail } = useUserContext();
   useEffect(() => {
     setUserDetail(props.isAuth);
   });
-  const router = useRouter();
+
   const clickHandle = () => {
     router.push("/auth/login");
   };
+
+  const clickLogo = () => {
+    router.push("/");
+  };
+
   return (
     <div className={styles.sign}>
       <Head>
@@ -27,7 +33,12 @@ export default function Register(props) {
       </Head>
       <ImagePanel />
       <div className={styles.rightSide}>
-        <Logo width="224.49px" height="73.2px" class={styles.logo} />
+        <Logo
+          width="224.49px"
+          height="73.2px"
+          class={styles.logo}
+          onClick={clickLogo}
+        />
         <div className={styles.registerFormWrapper}>
           <span className={styles.registerText}>Üye Ol</span>
           <span className={styles.registerUnderText}>

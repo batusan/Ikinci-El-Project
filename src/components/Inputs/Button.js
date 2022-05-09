@@ -25,6 +25,7 @@ function Button(props) {
       className={
         props.className ? cls(styles.button, props.className) : styles.button
       }
+      aria-label={props.ariaLabel || undefined}
       ref={props.ref || undefined}
       type={props.type || undefined}
       id={props.id || undefined}

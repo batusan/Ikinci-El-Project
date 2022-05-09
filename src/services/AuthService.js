@@ -24,7 +24,6 @@ export const Login = async (formdata) => {
 export const Register = async (formdata) => {
   try {
     const response = await axios.post(URL.register, formdata);
-
     if (response.status === 200) {
       cookie.set("Auth_Token", response.data.jwt);
       return true;

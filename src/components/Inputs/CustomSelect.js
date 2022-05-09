@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from "react";
 import Arrow from "@/assets/Icons/Arrow";
 import styles from "@/styles/input.module.css";
