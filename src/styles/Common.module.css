@@ -93,6 +93,11 @@
   cursor: pointer;
 }
 
+.ProductCard:hover {
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
+  transition: all 0.5s;
+}
+
 .ProductCardImage {
   position: relative;
   width: auto;
