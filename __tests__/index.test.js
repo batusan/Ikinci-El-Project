@@ -17,15 +17,14 @@ describe("Index", () => {
   });
 
   it("render a banner", () => {
-    render(
+    const { container } = render(
       <UserProvider>
         <ProductProvider>
           <Home />
         </ProductProvider>
       </UserProvider>
     );
-    const banner = screen.getByRole("img_banner");
-    expect(banner).toHaveAttribute("alt", "Banner Image");
+    expect(container.getElementsByClassName("Navbar").length).toBe(1);
   });
 
   it("render guest button", () => {
@@ -58,14 +57,13 @@ describe("Index", () => {
   });
 
   it("render logo", () => {
-    render(
+    const { container } = render(
       <UserProvider>
         <ProductProvider>
           <Home />
         </ProductProvider>
       </UserProvider>
     );
-    const logo = screen.getByRole("img_logo");
-    expect(logo).toHaveClass("Navbar_logo");
+    expect(container.getElementsByClassName("Navbar_logo").length).toBe(1);
   });
 });

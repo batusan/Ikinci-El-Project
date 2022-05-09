@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import cls from "classnames";
 import styles from "@/styles/AddProduct.module.css";
 import { useFormik } from "formik";

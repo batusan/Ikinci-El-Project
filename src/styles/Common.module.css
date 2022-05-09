@@ -54,15 +54,7 @@
   letter-spacing: 0px;
   overflow-x: scroll;
   overflow-y: hidden;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
   white-space: nowrap;
-}
-
-.Category::-webkit-scrollbar {
-  /* WebKit */
-  width: 0;
-  height: 0;
 }
 
 .CategoryItem {
@@ -399,6 +391,15 @@
 }
 
 @media (min-width: 1500px) {
+  .Category {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .Category::-webkit-scrollbar {
+    /* WebKit */
+    width: 0;
+    height: 0;
+  }
   .detailImage {
     width: 80%;
   }

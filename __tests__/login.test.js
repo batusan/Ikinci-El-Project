@@ -6,14 +6,13 @@ import { UserProvider } from "@/contexts/UserContext";
 
 describe("Login", () => {
   it("render logo on sign", () => {
-    render(
+    const { container } = render(
       <UserProvider>
         <ProductProvider>
           <Login />
         </ProductProvider>
       </UserProvider>
     );
-    const logo = screen.getByRole("img_logo");
-    expect(logo).toHaveClass("logo");
+    expect(container.getElementsByClassName("logo").length).toBe(1);
   });
 });
