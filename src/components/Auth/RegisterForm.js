@@ -41,7 +41,8 @@ export default function RegisterForm() {
       })
       .catch((error) => {
         setLoading(false);
-      });
+      })
+      .finally(() => setLoading(false));
   };
 
   const HandleSubmit = async (e) => {

@@ -38,7 +38,8 @@ export default function LoginForm() {
           router.push("/");
         }
       })
-      .catch((err) => setLoading(false));
+      .catch((err) => setLoading(false))
+      .finally(() => setLoading(false));
   };
 
   const HandleSubmit = async (e) => {
