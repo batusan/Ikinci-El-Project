@@ -35,6 +35,8 @@ A SecondHand Project , A platform where users can easily sell second-hand produc
 - Track product status.
 - Track your offers (bids).
 
+Note : if you aren't logged in , offer - buy buttons not gonna show up on details page.
+
 ## Technologies
 
 ##### Frontend
